@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low poly Farm asset
+* source:	https://sketchfab.com/3d-models/low-poly-farm-asset-1a6da767bc97442a8dd1d9e4c40f1a86
+* author:	Igor_Petrov (https://sketchfab.com/igor68rus)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low poly Farm asset" (https://sketchfab.com/3d-models/low-poly-farm-asset-1a6da767bc97442a8dd1d9e4c40f1a86) by Igor_Petrov (https://sketchfab.com/igor68rus) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
