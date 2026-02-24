@@ -128,6 +128,7 @@ const allAssetsLoaded = ref(false);
         />
 
         <!-- Panneaux de téléportation -->
+        <!-- cochons -->
         <TeleportPanel
           label="Cochons"
           position="12.852 -0.022 -14.270"
@@ -141,7 +142,7 @@ const allAssetsLoaded = ref(false);
           :teleport-z="0"
           :teleport-rot="0"
         />
-
+        <!-- vache -->
         <TeleportPanel
           label="Vaches"
           position="0 -100 0"
@@ -151,6 +152,34 @@ const allAssetsLoaded = ref(false);
           text-rotation="0 90 0"
           text-scale="0.510 0.200 0.300"
           :teleport-x="26"
+          :teleport-y="0"
+          :teleport-z="0"
+          :teleport-rot="0"
+        />
+        <!-- poules -->
+        <TeleportPanel
+          label="Poules"
+          position="0 -100 0"
+          rotation="0 0 0"
+          scale="0 0 0"
+          text-position="12.983 0.947 -14.251"
+          text-rotation="0 90 0"
+          text-scale="0.510 0.200 0.300"
+          :teleport-x="1"
+          :teleport-y="0"
+          :teleport-z="-11"
+          :teleport-rot="0"
+        />
+        <!-- moutons -->
+        <TeleportPanel
+          label="Moutons"
+          position="0 -100 0"
+          rotation="0 0 0"
+          scale="0 0 0"
+          text-position="13.007 1.222 -15.518"
+          text-rotation="0 90 0"
+          text-scale="0.510 0.500 0.300"
+          :teleport-x="7"
           :teleport-y="0"
           :teleport-z="0"
           :teleport-rot="0"
