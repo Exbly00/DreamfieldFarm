@@ -79,14 +79,16 @@ const props = defineProps({
       :teleport-camera-rig="`x: ${teleportX}; y: ${teleportY}; z: ${teleportZ}; rot: ${teleportRot}`"
       shadow="cast: true; receive: true"
     >
-      <!-- Texte sur le panneau -->
-      <a-text
-        :value="label"
-        align="center"
-        color="white"
-        width="4"
-        position="0 0 0.01"
-      ></a-text>
     </a-plane>
+
+    <!-- Texte sur le panneau (séparé pour éviter la déformation) -->
+    <a-text
+      :value="label"
+      :position="textPosition"
+      :rotation="textRotation"
+      align="center"
+      color="white"
+      width="4"
+    ></a-text>
   </a-entity>
 </template>

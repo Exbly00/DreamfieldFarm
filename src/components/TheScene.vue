@@ -140,7 +140,6 @@ const allAssetsLoaded = ref(false);
           :teleport-y="0"
           :teleport-z="0"
           :teleport-rot="0"
-          color="#D2691E"
         />
 
         <TeleportPanel
@@ -155,7 +154,6 @@ const allAssetsLoaded = ref(false);
           :teleport-y="0"
           :teleport-z="0"
           :teleport-rot="0"
-          color="#D2691E"
         />
       </a-entity>
     </template>
