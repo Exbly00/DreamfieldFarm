@@ -66,7 +66,7 @@ const props = defineProps({
     >
     </a-entity>
 
-    <!-- Rectangle semi-transparent cliquable avec le texte cochons -->
+    <!-- Rectangle semi-transparent cliquable -->
     <a-plane
       :position="textPosition"
       :rotation="textRotation"
@@ -81,7 +81,7 @@ const props = defineProps({
     >
     </a-plane>
 
-    <!-- Texte sur le panneau (séparé pour éviter la déformation) -->
+    <!-- Texte sur le panneau -->
     <a-text
       :value="label"
       :position="textPosition"

@@ -61,46 +61,46 @@ const allAssetsLoaded = ref(false);
         <!-- Animaux -->
         <Animal
           type="sheep"
-          position="7.960 0 -0.790"
-          rotation="0.000 172.118 0.000"
-          scale="0.45 0.45 0.45"
+          position="5.485 0 0.580"
+          rotation="0.000 -140.011 0.000"
+          scale="0.30 0.30 0.30"
           :animated="true"
         />
         <Animal
           type="sheep"
-          position="6.353 0 -0.790"
-          rotation="0.000 172.118 0.000"
-          scale="0.45 0.45 0.45"
+          position="8.936 0 -0.790"
+          rotation="0.000 156.792 0.000"
+          scale="0.30 0.30 0.30"
           :animated="true"
         />
 
         <Animal
           type="pig"
-          position="16.996 0 -1.025"
-          rotation="0 -45 0"
+          position="14.098 0 1.154"
+          rotation="0 -144.677 0"
           scale="0.05 0.05 0.05"
           :animated="true"
         />
         <Animal
           type="pig"
-          position="16.996 0 0.941"
-          rotation="0 -45 0"
+          position="14.890 0 -2.075"
+          rotation="0 138.989 0"
           scale="0.05 0.05 0.05"
           :animated="true"
         />
 
         <Animal
           type="pig"
-          position="14.890 0 -0.339"
-          rotation="0 172.965 0"
+          position="17.762 0 0.722"
+          rotation="0 67.765 0"
           scale="0.05 0.05 0.05"
           :animated="true"
         />
 
         <Animal
           type="cow"
-          position="25.919 0 -0.866"
-          rotation="0 147.107 0"
+          position="27.005 0 -2.062"
+          rotation="0 -122.027 0"
           scale="0.45 0.45 0.45"
           :animated="true"
         />
