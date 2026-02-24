@@ -19,6 +19,10 @@ const props = defineProps({
     type: String,
     default: "1 1 1",
   },
+  animated: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Mapping des types d'animaux vers leurs modèles
@@ -33,6 +37,7 @@ const animalModelId = computed(() => `#${props.type}-model`);
       :position="position"
       :rotation="rotation"
       :scale="scale"
+      :animation-mixer="animated ? 'clip: *' : ''"
       shadow="cast: true; receive: true"
     ></a-entity>
   </a-entity>

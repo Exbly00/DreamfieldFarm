@@ -59,6 +59,7 @@ const allAssetsLoaded = ref(false);
           position="7.960 0 -0.790"
           rotation="0.000 172.118 0.000"
           scale="0.45 0.45 0.45"
+          :animated="true"
         />
         <Animal
           type="alpaca"
@@ -78,6 +79,13 @@ const allAssetsLoaded = ref(false);
           type="pig"
           position="16.996 0 0.941"
           rotation="0 -45 0"
+          scale="0.05 0.05 0.05"
+        />
+
+        <Animal
+          type="pig"
+          position="14.890 0 -0.339"
+          rotation="0 172.965 0"
           scale="0.05 0.05 0.05"
         />
 
