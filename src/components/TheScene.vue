@@ -16,6 +16,12 @@ const allAssetsLoaded = ref(false);
         id="alpaca-model"
         src="assets/low_poly_alpaca/scene.gltf"
       ></a-asset-item>
+      <a-asset-item id="pig-model" src="assets/pig/scene.gltf"></a-asset-item>
+      <a-asset-item id="cow-model" src="assets/cow/scene.gltf"></a-asset-item>
+      <a-asset-item
+        id="chicken-model"
+        src="assets/cartoon_chicken/scene.gltf"
+      ></a-asset-item>
     </a-assets>
 
     <template v-if="allAssetsLoaded">
@@ -59,6 +65,48 @@ const allAssetsLoaded = ref(false);
           position="6.353 0 -0.790"
           rotation="0.000 172.118 0.000"
           scale="0.45 0.45 0.45"
+        />
+
+        <!-- Cochons -->
+        <Animal
+          type="pig"
+          position="16.996 0 -1.025"
+          rotation="0 -45 0"
+          scale="0.05 0.05 0.05"
+        />
+        <Animal
+          type="pig"
+          position="16.996 0 0.941"
+          rotation="0 -45 0"
+          scale="0.05 0.05 0.05"
+        />
+
+        <!-- Vaches -->
+        <Animal
+          type="cow"
+          position="25.919 0 -0.866"
+          rotation="0 147.107 0"
+          scale="0.45 0.45 0.45"
+        />
+
+        <!-- Poules -->
+        <Animal
+          type="chicken"
+          position="1.466 0 -11.917"
+          rotation="0 0 0"
+          scale="0.01 0.01 0.01"
+        />
+        <Animal
+          type="chicken"
+          position="3.048 0 -11.917"
+          rotation="0 -114.691 0"
+          scale="0.01 0.01 0.01"
+        />
+        <Animal
+          type="chicken"
+          position="-0.306 0 -10.808"
+          rotation="0 62.719 0"
+          scale="0.01 0.01 0.01"
         />
       </a-entity>
     </template>
