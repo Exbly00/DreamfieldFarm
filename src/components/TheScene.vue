@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import TheCameraRig from "./TheCameraRig.vue";
+import Animal from "./Animal.vue";
 
 const allAssetsLoaded = ref(false);
 </script>
@@ -10,6 +11,11 @@ const allAssetsLoaded = ref(false);
     <a-assets @loaded="allAssetsLoaded = true">
       <img id="sky-texture" src="/assets/sky.jpg" />
       <a-asset-item id="farm-model" src="assets/farm/farm.glb"></a-asset-item>
+      <!-- Assets des animaux -->
+      <a-asset-item
+        id="alpaca-model"
+        src="assets/low_poly_alpaca/scene.gltf"
+      ></a-asset-item>
     </a-assets>
 
     <template v-if="allAssetsLoaded">
@@ -40,7 +46,9 @@ const allAssetsLoaded = ref(false);
           scale="4 4 4"
           shadow="cast: true; receive: true"
         ></a-entity>
-        <!-- mettre les animaux ici -->
+
+        <!-- Animaux -->
+        <Animal type="alpaca" position="10 0 -10" scale="0.4 0.4 0.4" />
       </a-entity>
     </template>
 
