@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import TheCameraRig from "./TheCameraRig.vue";
 import Animal from "./Animal.vue";
+import TeleportPanel from "./TeleportPanel.vue";
 
 const allAssetsLoaded = ref(false);
 </script>
@@ -21,6 +22,10 @@ const allAssetsLoaded = ref(false);
       <a-asset-item
         id="chicken-model"
         src="assets/cartoon_chicken/scene.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="wood-sign-model"
+        src="assets/stylized_wood_signs/scene.gltf"
       ></a-asset-item>
     </a-assets>
 
@@ -56,16 +61,16 @@ const allAssetsLoaded = ref(false);
         <!-- Animaux -->
         <Animal
           type="sheep"
-          position="7.960 0 0.526"
-          rotation="0.000 151.617 0.000"
-          scale="0.3 0.3 0.3"
+          position="7.960 0 -0.790"
+          rotation="0.000 172.118 0.000"
+          scale="0.45 0.45 0.45"
           :animated="true"
         />
         <Animal
           type="sheep"
-          position="5.726 0 -0.790"
-          rotation="0.000 -163.672 0.000"
-          scale="0.3 0.3 0.3"
+          position="6.353 0 -0.790"
+          rotation="0.000 172.118 0.000"
+          scale="0.45 0.45 0.45"
           :animated="true"
         />
 
@@ -120,6 +125,37 @@ const allAssetsLoaded = ref(false);
           rotation="0 62.719 0"
           scale="0.01 0.01 0.01"
           :animated="true"
+        />
+
+        <!-- Panneaux de téléportation -->
+        <TeleportPanel
+          label="Cochons"
+          position="12.852 -0.022 -14.270"
+          rotation="0 90 0"
+          scale="1.0 1.0 1.0"
+          text-position="12.936 1.237 -12.917"
+          text-rotation="0 90 0"
+          text-scale="0.55 0.55 0.55"
+          :teleport-x="16"
+          :teleport-y="0"
+          :teleport-z="0"
+          :teleport-rot="0"
+          color="#D2691E"
+        />
+
+        <TeleportPanel
+          label="Vaches"
+          position="0 -100 0"
+          rotation="0 0 0"
+          scale="0 0 0"
+          text-position="12.935 1.278 -14.281"
+          text-rotation="0 90 0"
+          text-scale="0.510 0.200 0.300"
+          :teleport-x="26"
+          :teleport-y="0"
+          :teleport-z="0"
+          :teleport-rot="0"
+          color="#D2691E"
         />
       </a-entity>
     </template>
