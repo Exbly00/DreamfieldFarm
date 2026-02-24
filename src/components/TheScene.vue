@@ -13,8 +13,8 @@ const allAssetsLoaded = ref(false);
       <a-asset-item id="farm-model" src="assets/farm/farm.glb"></a-asset-item>
       <!-- Assets des animaux -->
       <a-asset-item
-        id="alpaca-model"
-        src="assets/low_poly_alpaca/scene.gltf"
+        id="sheep-model"
+        src="assets/sheep/scene.gltf"
       ></a-asset-item>
       <a-asset-item id="pig-model" src="assets/pig/scene.gltf"></a-asset-item>
       <a-asset-item id="cow-model" src="assets/cow/scene.gltf"></a-asset-item>
@@ -55,21 +55,20 @@ const allAssetsLoaded = ref(false);
 
         <!-- Animaux -->
         <Animal
-          type="alpaca"
-          position="7.960 0 -0.790"
-          rotation="0.000 172.118 0.000"
-          scale="0.45 0.45 0.45"
+          type="sheep"
+          position="7.960 0 0.526"
+          rotation="0.000 151.617 0.000"
+          scale="0.3 0.3 0.3"
           :animated="true"
         />
         <Animal
-          type="alpaca"
-          position="6.353 0 -0.790"
-          rotation="0.000 172.118 0.000"
-          scale="0.45 0.45 0.45"
+          type="sheep"
+          position="5.726 0 -0.790"
+          rotation="0.000 -163.672 0.000"
+          scale="0.3 0.3 0.3"
           :animated="true"
         />
 
-        <!-- Cochons -->
         <Animal
           type="pig"
           position="16.996 0 -1.025"
@@ -93,7 +92,6 @@ const allAssetsLoaded = ref(false);
           :animated="true"
         />
 
-        <!-- Vaches -->
         <Animal
           type="cow"
           position="25.919 0 -0.866"
@@ -102,7 +100,6 @@ const allAssetsLoaded = ref(false);
           :animated="true"
         />
 
-        <!-- Poules -->
         <Animal
           type="chicken"
           position="1.466 0 -11.917"

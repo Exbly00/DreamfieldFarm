@@ -5,7 +5,7 @@ const props = defineProps({
   type: {
     type: String,
     required: true,
-    validator: (value) => ["alpaca", "cow", "pig", "chicken"].includes(value),
+    validator: (value) => ["sheep", "cow", "pig", "chicken"].includes(value),
   },
   position: {
     type: String,
