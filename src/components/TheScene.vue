@@ -48,7 +48,18 @@ const allAssetsLoaded = ref(false);
         ></a-entity>
 
         <!-- Animaux -->
-        <Animal type="alpaca" position="10 0 -10" scale="0.4 0.4 0.4" />
+        <Animal
+          type="alpaca"
+          position="7.960 0 -0.790"
+          rotation="0.000 172.118 0.000"
+          scale="0.45 0.45 0.45"
+        />
+        <Animal
+          type="alpaca"
+          position="6.353 0 -0.790"
+          rotation="0.000 172.118 0.000"
+          scale="0.45 0.45 0.45"
+        />
       </a-entity>
     </template>
 
