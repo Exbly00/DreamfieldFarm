@@ -9,8 +9,8 @@ AFRAME.registerComponent("feed-animal", {
 
     // Configuration des cœurs par type d'animal
     this.heartConfig = {
-      sheep: { y: 5.967, z: 3.198, scale: 0.002, offsetX: 0.5 }, // Moutons (fonctionne déjà)
-      pig: { y: 25, z: 19, scale: 0.012, offsetX: 0.5 }, // Cochons (ajusté + plus d'espacement)
+      sheep: { y: 5.967, z: 3.198, scale: 0.002, offsetX: 0.5 },
+      pig: { y: 25, z: 19, scale: 0.012, offsetX: 0.5 },
       cow: { y: 4, z: 2, scale: 0.001, offsetX: 0.5 }, // Vaches (à ajuster)
       chicken: { y: 10, z: 5, scale: 0.005, offsetX: 0.5 }, // Poules (à ajuster)
     };
@@ -91,7 +91,7 @@ AFRAME.registerComponent("feed-animal", {
     const config =
       this.heartConfig[this.data.animalType] || this.heartConfig.sheep;
 
-    console.log(`Creating hearts for ${this.data.animalType}:`, config);
+    // console.log(`Creating hearts for ${this.data.animalType}:`, config);
 
     for (let i = 0; i < 3; i++) {
       setTimeout(() => {

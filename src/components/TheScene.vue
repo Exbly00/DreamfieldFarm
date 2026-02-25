@@ -116,19 +116,35 @@ const allAssetsLoaded = ref(false);
         />
 
         <Animal
+          id="pig-2"
           type="pig"
           position="14.890 0 -2.075"
           rotation="0 138.989 0"
           scale="0.05 0.05 0.05"
           :animated="true"
         />
+        <!-- Nourriture pour le cochon 2 -->
+        <FoodSphere
+          animal-id="pig-2"
+          animal-type="pig"
+          position="14.5 0 -2.5"
+          scale="0.5 0.5 0.5"
+        />
 
         <Animal
+          id="pig-3"
           type="pig"
           position="17.762 0 0.722"
           rotation="0 67.765 0"
           scale="0.05 0.05 0.05"
           :animated="true"
+        />
+        <!-- Nourriture pour le cochon 3 -->
+        <FoodSphere
+          animal-id="pig-3"
+          animal-type="pig"
+          position="18 0 0.5"
+          scale="0.5 0.5 0.5"
         />
 
         <Animal
