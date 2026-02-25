@@ -49,7 +49,8 @@ const allAssetsLoaded = ref(false);
         castShadow="true"
       ></a-light>
 
-      <a-entity>
+      <!-- World scale container: réduit tout de 20% sauf le camera-rig -->
+      <a-entity id="world-scale" scale="0.8 0.8 0.8">
         <a-plane
           position="0 0 0"
           rotation="-90 0 0"
