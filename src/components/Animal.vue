@@ -34,14 +34,10 @@ const animalModelId = computed(() => `#${props.type}-model`);
 </script>
 
 <template>
-  <a-entity>
-    <!-- Modèle 3D de l'animal -->
+  <a-entity :id="id" :position="position" :rotation="rotation" :scale="scale">
+    <!-- Modèle 3D de l'animal avec animation-mixer -->
     <a-entity
-      :id="id"
       :gltf-model="animalModelId"
-      :position="position"
-      :rotation="rotation"
-      :scale="scale"
       :animation-mixer="animated ? 'clip: *' : ''"
       shadow="cast: true; receive: true"
     ></a-entity>

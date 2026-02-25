@@ -59,10 +59,11 @@ AFRAME.registerComponent("feed-animal", {
         easing: "easeInQuad",
       });
 
-      // Remettre explicitement la position d'origine après l'animation
+      // Nettoyer l'animation après qu'elle soit terminée
       setTimeout(() => {
-        animalEl.setAttribute("position", originalPosition);
         animalEl.removeAttribute("animation__jump-down");
+        // Ne pas utiliser setAttribute("position") car ça peut casser l'animation-mixer
+        // L'animation a déjà remis l'animal à la bonne position
       }, 320);
     }, 300);
 
