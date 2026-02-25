@@ -4,9 +4,9 @@
     :rotation="rotation"
     :scale="scale"
     color="red"
-    opacity="0.0"
+    opacity="0.5"
     clickable
-    teleport-camera-rig="x: 15.936; y: 0; z: -14.227; rot: 0"
+    teleport-camera-rig="x: 12.749; y: 0; z: -11.382; rot: 0"
   ></a-plane>
 </template>
 
