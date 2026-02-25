@@ -81,7 +81,7 @@ AFRAME.registerComponent("feed-animal", {
 
     for (let i = 0; i < 3; i++) {
       setTimeout(() => {
-        const heart = document.createElement("a-plane");
+        const heart = document.createElement("a-entity");
 
         // Position RELATIVE avec léger décalage horizontal
         const offsetX = (Math.random() - 0.5) * 0.5;
@@ -89,15 +89,9 @@ AFRAME.registerComponent("feed-animal", {
         const startZ = 3.198; // Position z ajustée
 
         heart.setAttribute("position", `${offsetX} ${startY} ${startZ}`);
-        heart.setAttribute("width", "0.6");
-        heart.setAttribute("height", "0.6");
-        heart.setAttribute("src", "#heart-texture");
-        heart.setAttribute(
-          "material",
-          "opacity: 1; transparent: true; alphaTest: 0.5",
-        );
+        heart.setAttribute("gltf-model", "#heart-model");
+        heart.setAttribute("scale", "0.002 0.002 0.002");
         heart.setAttribute("visible", true);
-        heart.setAttribute("billboard", ""); // Toujours face à la caméra
 
         // Animation de montée (RELATIVE)
         heart.setAttribute("animation__rise", {

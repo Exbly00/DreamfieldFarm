@@ -1,0 +1,8 @@
+Model Information:
+* title:	Heart emoji
+* source:	https://sketchfab.com/3d-models/heart-emoji-ee06846511314b96981313971236e188
+* author:	assetfactory (https://sketchfab.com/assetfactory)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

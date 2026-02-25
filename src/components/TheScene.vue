@@ -14,6 +14,7 @@ const allAssetsLoaded = ref(false);
     <a-assets @loaded="allAssetsLoaded = true">
       <img id="sky-texture" src="/assets/sky.jpg" />
       <img id="heart-texture" src="/assets/coeur.png" />
+      <a-asset-item id="heart-model" src="assets/heart_emoji/scene.gltf"></a-asset-item>
       <a-asset-item id="farm-model" src="assets/farm/farm.glb"></a-asset-item>
       <a-asset-item id="grain-model" src="assets/grain.glb"></a-asset-item>
       <!-- Assets des animaux -->
