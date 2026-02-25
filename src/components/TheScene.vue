@@ -148,11 +148,19 @@ const allAssetsLoaded = ref(false);
         />
 
         <Animal
+          id="cow-1"
           type="cow"
           position="27.005 0 -2.062"
           rotation="0 -122.027 0"
           scale="0.45 0.45 0.45"
           :animated="true"
+        />
+        <!-- Nourriture pour la vache -->
+        <FoodSphere
+          animal-id="cow-1"
+          animal-type="cow"
+          position="27 0 -3"
+          scale="0.5 0.5 0.5"
         />
 
         <Animal
@@ -235,6 +243,7 @@ const allAssetsLoaded = ref(false);
           :teleport-rot="0"
         />
 
+        <!-- Portes de l'enclos avec de la téléportation -->
         <!-- Porte 1 (Moutons)-->
         <ReturnDoor
           position="4.993 0.924 -3.786"

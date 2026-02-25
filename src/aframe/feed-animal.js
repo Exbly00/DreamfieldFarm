@@ -10,9 +10,9 @@ AFRAME.registerComponent("feed-animal", {
     // Configuration des cœurs par type d'animal
     this.heartConfig = {
       sheep: { y: 5.967, z: 3.198, scale: 0.002, offsetX: 0.5 },
-      pig: { y: 25, z: 19, scale: 0.012, offsetX: 0.5 },
-      cow: { y: 4, z: 2, scale: 0.001, offsetX: 0.5 }, // Vaches (à ajuster)
-      chicken: { y: 10, z: 5, scale: 0.005, offsetX: 0.5 }, // Poules (à ajuster)
+      pig: { y: 25, z: 19, scale: 0.012, offsetX: 3 },
+      cow: { y: 4, z: 2.1, scale: 0.0013, offsetX: 0.5 },
+      chicken: { y: 10, z: 5, scale: 0.005, offsetX: 0.5 },
     };
 
     // Événement de clic
@@ -44,7 +44,6 @@ AFRAME.registerComponent("feed-animal", {
     };
 
     // 3. Animation de saut de l'animal - montée puis descente
-    // Retirer les anciennes animations si elles existent
     animalEl.removeAttribute("animation__jump-up");
     animalEl.removeAttribute("animation__jump-down");
 
@@ -71,8 +70,6 @@ AFRAME.registerComponent("feed-animal", {
       // Nettoyer l'animation après qu'elle soit terminée
       setTimeout(() => {
         animalEl.removeAttribute("animation__jump-down");
-        // Ne pas utiliser setAttribute("position") car ça peut casser l'animation-mixer
-        // L'animation a déjà remis l'animal à la bonne position
       }, 320);
     }, 300);
 
@@ -90,8 +87,6 @@ AFRAME.registerComponent("feed-animal", {
     // Récupérer la config pour ce type d'animal
     const config =
       this.heartConfig[this.data.animalType] || this.heartConfig.sheep;
-
-    // console.log(`Creating hearts for ${this.data.animalType}:`, config);
 
     for (let i = 0; i < 3; i++) {
       setTimeout(() => {
