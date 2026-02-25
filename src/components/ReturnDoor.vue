@@ -4,7 +4,7 @@
     :rotation="rotation"
     :scale="scale"
     color="red"
-    opacity="0.5"
+    opacity="0"
     clickable
     teleport-camera-rig="x: 12.749; y: 0; z: -11.382; rot: 0"
   ></a-plane>
