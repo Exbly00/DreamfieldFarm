@@ -3,6 +3,7 @@ import { ref } from "vue";
 import TheCameraRig from "./TheCameraRig.vue";
 import Animal from "./Animal.vue";
 import TeleportPanel from "./TeleportPanel.vue";
+import ReturnDoor from "./ReturnDoor.vue";
 
 const allAssetsLoaded = ref(false);
 </script>
@@ -183,6 +184,31 @@ const allAssetsLoaded = ref(false);
           :teleport-y="0"
           :teleport-z="0"
           :teleport-rot="0"
+        />
+
+        <!-- Porte 1 (Moutons)-->
+        <ReturnDoor
+          position="4.993 0.924 -3.786"
+          rotation="0 0 0"
+          scale="1.700 1.600 1.000"
+        />
+        <!-- Porte 2 (Cochons)-->
+        <ReturnDoor
+          position="13.997 0.928 -3.716"
+          rotation="0 0 0"
+          scale="1.700 1.600 1.000"
+        />
+        <!-- Porte 3 (vache)-->
+        <ReturnDoor
+          position="23.160 0.937 -3.604"
+          rotation="0 0 0"
+          scale="1.700 1.600 1.000"
+        />
+        <!-- Porte 4 (Poules) -->
+        <ReturnDoor
+          position="4.101 0.890 -14.271"
+          rotation="0 -90.000 0"
+          scale="3.190 1.880 1"
         />
       </a-entity>
     </template>

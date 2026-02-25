@@ -13,7 +13,7 @@ export default defineConfig(({ command, mode }) => {
   const config = {
     base: "/",
     plugins: [
-      // basicSsl(),
+      basicSsl(),
       vue({
         template: {
           compilerOptions: {
