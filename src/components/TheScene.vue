@@ -15,6 +15,7 @@ const allAssetsLoaded = ref(false);
       <img id="sky-texture" src="/assets/sky.jpg" />
       <img id="heart-texture" src="/assets/coeur.png" />
       <a-asset-item id="farm-model" src="assets/farm/farm.glb"></a-asset-item>
+      <a-asset-item id="grain-model" src="assets/grain.glb"></a-asset-item>
       <!-- Assets des animaux -->
       <a-asset-item
         id="sheep-model"
@@ -73,8 +74,8 @@ const allAssetsLoaded = ref(false);
         <!-- Nourriture pour le mouton 1 -->
         <FoodSphere
           animal-id="sheep-1"
-          position="4.201 0.919 -0.512"
-          radius="0.2"
+          position="5.461 -0.023 -0.433"
+          scale="0.5 0.5 0.5"
         />
 
         <Animal

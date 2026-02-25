@@ -73,7 +73,7 @@ AFRAME.registerComponent("feed-animal", {
     setTimeout(() => {
       this.el.setAttribute("visible", true);
       this.fedRecently = false;
-    }, 3000);
+    }, 1000);
   },
 
   createHearts: function (animalEl) {

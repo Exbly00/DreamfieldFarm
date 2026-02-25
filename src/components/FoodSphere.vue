@@ -1,11 +1,11 @@
 <template>
-  <a-sphere
+  <a-entity
     :position="position"
-    :radius="radius"
-    :color="color"
+    gltf-model="#grain-model"
+    :scale="scale"
     clickable
     :feed-animal="`animalId: ${animalId}`"
-  ></a-sphere>
+  ></a-entity>
 </template>
 
 <script setup>
@@ -18,13 +18,9 @@ defineProps({
     type: String,
     default: "0 0.3 0",
   },
-  radius: {
+  scale: {
     type: String,
-    default: "0.2",
-  },
-  color: {
-    type: String,
-    default: "#8B4513", // Couleur marron pour la nourriture
+    default: "1 1 1",
   },
   animalId: {
     type: String,
