@@ -14,7 +14,10 @@ const allAssetsLoaded = ref(false);
     <a-assets @loaded="allAssetsLoaded = true">
       <img id="sky-texture" src="/assets/sky.jpg" />
       <img id="heart-texture" src="/assets/coeur.png" />
-      <a-asset-item id="heart-model" src="assets/heart_emoji/scene.gltf"></a-asset-item>
+      <a-asset-item
+        id="heart-model"
+        src="assets/heart_emoji/scene.gltf"
+      ></a-asset-item>
       <a-asset-item id="farm-model" src="assets/farm/farm.glb"></a-asset-item>
       <a-asset-item id="grain-model" src="assets/grain.glb"></a-asset-item>
       <!-- Assets des animaux -->
@@ -75,6 +78,7 @@ const allAssetsLoaded = ref(false);
         <!-- Nourriture pour le mouton 1 -->
         <FoodSphere
           animal-id="sheep-1"
+          animal-type="sheep"
           position="5.461 -0.023 -0.433"
           scale="0.5 0.5 0.5"
         />
@@ -90,17 +94,27 @@ const allAssetsLoaded = ref(false);
         <!-- Nourriture pour le mouton 2 -->
         <FoodSphere
           animal-id="sheep-2"
+          animal-type="sheep"
           position="11.422 0 -2.525"
           scale="0.5 0.5 0.5"
         />
 
         <Animal
+          id="pig-1"
           type="pig"
           position="14.098 0 1.154"
           rotation="0 -144.677 0"
           scale="0.05 0.05 0.05"
           :animated="true"
         />
+        <!-- Nourriture pour le cochon 1 (à tester et ajuster) -->
+        <FoodSphere
+          animal-id="pig-1"
+          animal-type="pig"
+          position="14.5 0 1.5"
+          scale="0.5 0.5 0.5"
+        />
+
         <Animal
           type="pig"
           position="14.890 0 -2.075"

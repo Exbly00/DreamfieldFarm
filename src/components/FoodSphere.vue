@@ -4,7 +4,7 @@
     gltf-model="#grain-model"
     :scale="scale"
     clickable
-    :feed-animal="`animalId: ${animalId}`"
+    :feed-animal="`animalId: ${animalId}; animalType: ${animalType}`"
   ></a-entity>
 </template>
 
@@ -23,6 +23,10 @@ defineProps({
     default: "1 1 1",
   },
   animalId: {
+    type: String,
+    required: true,
+  },
+  animalType: {
     type: String,
     required: true,
   },

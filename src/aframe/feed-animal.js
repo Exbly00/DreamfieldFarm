@@ -1,10 +1,19 @@
 AFRAME.registerComponent("feed-animal", {
   schema: {
     animalId: { type: "string", default: "" },
+    animalType: { type: "string", default: "sheep" },
   },
 
   init: function () {
     this.fedRecently = false;
+
+    // Configuration des cœurs par type d'animal
+    this.heartConfig = {
+      sheep: { y: 5.967, z: 3.198, scale: 0.002, offsetX: 0.5 }, // Moutons (fonctionne déjà)
+      pig: { y: 25, z: 19, scale: 0.012, offsetX: 0.5 }, // Cochons (ajusté + plus d'espacement)
+      cow: { y: 4, z: 2, scale: 0.001, offsetX: 0.5 }, // Vaches (à ajuster)
+      chicken: { y: 10, z: 5, scale: 0.005, offsetX: 0.5 }, // Poules (à ajuster)
+    };
 
     // Événement de clic
     this.el.addEventListener("click", () => {
@@ -78,43 +87,46 @@ AFRAME.registerComponent("feed-animal", {
   },
 
   createHearts: function (animalEl) {
-    console.log("Creating hearts as children of animal");
+    // Récupérer la config pour ce type d'animal
+    const config =
+      this.heartConfig[this.data.animalType] || this.heartConfig.sheep;
+
+    console.log(`Creating hearts for ${this.data.animalType}:`, config);
 
     for (let i = 0; i < 3; i++) {
       setTimeout(() => {
         const heart = document.createElement("a-entity");
 
-        // Position RELATIVE avec léger décalage horizontal
-        const offsetX = (Math.random() - 0.5) * 0.5;
-        const startY = 5.967; // Position y ajustée
-        const startZ = 3.198; // Position z ajustée
+        // Position RELATIVE avec décalage horizontal ajustable
+        const offsetX = (Math.random() - 0.5) * config.offsetX;
 
-        heart.setAttribute("position", `${offsetX} ${startY} ${startZ}`);
+        heart.setAttribute("position", `${offsetX} ${config.y} ${config.z}`);
         heart.setAttribute("gltf-model", "#heart-model");
-        heart.setAttribute("scale", "0.002 0.002 0.002");
+        heart.setAttribute(
+          "scale",
+          `${config.scale} ${config.scale} ${config.scale}`,
+        );
         heart.setAttribute("visible", true);
 
-        // Animation de montée (RELATIVE)
+        // Animation de montée
         heart.setAttribute("animation__rise", {
           property: "position.y",
-          from: startY,
-          to: startY + 2,
+          from: config.y,
+          to: config.y + 2,
           dur: 1500,
           easing: "easeOutQuad",
         });
 
-        // Animation de fade out
+        // Animation de fade
         heart.setAttribute("animation__fade", {
-          property: "material.opacity",
-          from: 1,
-          to: 0,
+          property: "scale",
+          to: "0.0001 0.0001 0.0001",
           dur: 1500,
           easing: "easeInQuad",
         });
 
         // Ajouter comme ENFANT de l'animal
         animalEl.appendChild(heart);
-        console.log(`Heart ${i} added as child of animal`);
 
         // Supprimer après l'animation
         setTimeout(() => {
