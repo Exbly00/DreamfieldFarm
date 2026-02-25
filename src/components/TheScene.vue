@@ -79,11 +79,18 @@ const allAssetsLoaded = ref(false);
         />
 
         <Animal
+          id="sheep-2"
           type="sheep"
           position="8.936 0 -0.790"
           rotation="0.000 156.792 0.000"
           scale="0.30 0.30 0.30"
           :animated="true"
+        />
+        <!-- Nourriture pour le mouton 2 -->
+        <FoodSphere
+          animal-id="sheep-2"
+          position="11.422 0 -2.525"
+          scale="0.5 0.5 0.5"
         />
 
         <Animal
