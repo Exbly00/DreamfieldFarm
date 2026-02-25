@@ -4,6 +4,7 @@ import TheCameraRig from "./TheCameraRig.vue";
 import Animal from "./Animal.vue";
 import TeleportPanel from "./TeleportPanel.vue";
 import ReturnDoor from "./ReturnDoor.vue";
+import FoodSphere from "./FoodSphere.vue";
 
 const allAssetsLoaded = ref(false);
 </script>
@@ -12,6 +13,7 @@ const allAssetsLoaded = ref(false);
   <a-scene background="color: #87CEEB">
     <a-assets @loaded="allAssetsLoaded = true">
       <img id="sky-texture" src="/assets/sky.jpg" />
+      <img id="heart-texture" src="/assets/coeur.png" />
       <a-asset-item id="farm-model" src="assets/farm/farm.glb"></a-asset-item>
       <!-- Assets des animaux -->
       <a-asset-item
@@ -61,12 +63,20 @@ const allAssetsLoaded = ref(false);
 
         <!-- Animaux -->
         <Animal
+          id="sheep-1"
           type="sheep"
           position="5.485 0 0.580"
           rotation="0.000 -140.011 0.000"
           scale="0.30 0.30 0.30"
           :animated="true"
         />
+        <!-- Nourriture pour le mouton 1 -->
+        <FoodSphere
+          animal-id="sheep-1"
+          position="4.201 0.919 -0.512"
+          radius="0.2"
+        />
+
         <Animal
           type="sheep"
           position="8.936 0 -0.790"

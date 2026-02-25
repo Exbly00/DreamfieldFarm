@@ -2,6 +2,10 @@
 import { computed } from "vue";
 
 const props = defineProps({
+  id: {
+    type: String,
+    default: "",
+  },
   type: {
     type: String,
     required: true,
@@ -33,6 +37,7 @@ const animalModelId = computed(() => `#${props.type}-model`);
   <a-entity>
     <!-- Modèle 3D de l'animal -->
     <a-entity
+      :id="id"
       :gltf-model="animalModelId"
       :position="position"
       :rotation="rotation"
