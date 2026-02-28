@@ -15,8 +15,23 @@ AFRAME.registerComponent("feed-animal", {
       chicken: { y: 10, z: 5, scale: 0.005, offsetX: 0.5 },
     };
 
-    // Événement de clic
-    this.el.addEventListener("click", () => {
+    // Événement de clic - ne se déclenche que si pas grabbé
+    this.el.addEventListener("click", (evt) => {
+      // Ne pas nourrir si l'objet est actuellement grabbé
+      const simpleGrab = this.el.components['simple-grab'];
+      if (simpleGrab && simpleGrab.grabbedBy) {
+        return; // Le sac est dans une main, ne pas nourrir
+      }
+      
+      // Vérifier si on est en VR (le cursorEl est une main VR)
+      const cursorEl = evt.detail?.cursorEl;
+      const isVRHand = cursorEl && (cursorEl.id === 'hand-left' || cursorEl.id === 'hand-right');
+      
+      // Si c'est en VR et que le sac vient d'être grabbé, ne pas nourrir
+      if (isVRHand && simpleGrab && simpleGrab.grabbedBy) {
+        return;
+      }
+      
       if (!this.fedRecently) {
         this.feedAnimal();
       }
@@ -32,10 +47,18 @@ AFRAME.registerComponent("feed-animal", {
 
     this.fedRecently = true;
 
-    // 1. Cacher la sphère de nourriture
+    // 1. Si le sac était grabbé, le drop
+    const simpleGrab = this.el.components['simple-grab'];
+    if (simpleGrab && simpleGrab.grabbedBy) {
+      const grabSystem = this.el.sceneEl.systems['simple-grab'];
+      grabSystem.removeCurrentGrab(simpleGrab.grabbedBy, this.el, null);
+      simpleGrab.grabbedBy = null;
+    }
+
+    // 2. Cacher le sac de nourriture
     this.el.setAttribute("visible", false);
 
-    // 2. Sauvegarder la position complète de l'animal
+    // 3. Sauvegarder la position complète de l'animal
     const animalPosition = animalEl.getAttribute("position");
     const originalPosition = {
       x: animalPosition.x,
@@ -43,7 +66,7 @@ AFRAME.registerComponent("feed-animal", {
       z: animalPosition.z,
     };
 
-    // 3. Animation de saut de l'animal - montée puis descente
+    // 4. Animation de saut de l'animal - montée puis descente
     animalEl.removeAttribute("animation__jump-up");
     animalEl.removeAttribute("animation__jump-down");
 
@@ -76,7 +99,7 @@ AFRAME.registerComponent("feed-animal", {
     // 4. Créer les 3 cœurs au-dessus de l'animal (comme enfants)
     this.createHearts(animalEl);
 
-    // 5. Réapparition de la nourriture après 5 secondes
+    // 5. Réapparition de la nourriture après 1 seconde
     setTimeout(() => {
       this.el.setAttribute("visible", true);
       this.fedRecently = false;
