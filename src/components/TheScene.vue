@@ -27,6 +27,7 @@ const allAssetsLoaded = ref(false);
         id="carrot-model"
         src="assets/low_poly_carrot.glb"
       ></a-asset-item>
+
       <!-- Assets des animaux -->
       <a-asset-item
         id="sheep-model"
@@ -74,7 +75,7 @@ const allAssetsLoaded = ref(false);
           shadow="cast: true; receive: true"
         ></a-entity>
 
-        <!-- Animaux -->
+        <!-- Moutons -->
         <Animal
           id="sheep-1"
           type="sheep"
@@ -83,14 +84,12 @@ const allAssetsLoaded = ref(false);
           scale="0.30 0.30 0.30"
           :animated="true"
         />
-        <!-- Nourriture pour le mouton 1 -->
         <FoodSphere
           animal-id="sheep-1"
           animal-type="sheep"
           position="5.461 -0.023 -0.433"
           scale="0.5 0.5 0.5"
         />
-
         <Animal
           id="sheep-2"
           type="sheep"
@@ -99,14 +98,12 @@ const allAssetsLoaded = ref(false);
           scale="0.30 0.30 0.30"
           :animated="true"
         />
-        <!-- Nourriture pour le mouton 2 -->
         <FoodSphere
           animal-id="sheep-2"
           animal-type="sheep"
           position="11.422 0 -2.525"
           scale="0.5 0.5 0.5"
         />
-
         <Animal
           id="pig-1"
           type="pig"
@@ -115,14 +112,33 @@ const allAssetsLoaded = ref(false);
           scale="0.05 0.05 0.05"
           :animated="true"
         />
-        <!-- Nourriture pour le cochon 1 (à tester et ajuster) -->
+        <TeleportPanel
+          label="Moutons"
+          position="0 -100 0"
+          rotation="0 0 0"
+          scale="0 0 0"
+          text-position="13.007 1.222 -15.518"
+          text-rotation="0 90 0"
+          text-scale="0.510 0.500 0.300"
+          :teleport-x="5.6"
+          :teleport-y="0"
+          :teleport-z="0"
+          :teleport-rot="0"
+        />
+        <ReturnDoor
+          position="4.993 0.924 -3.786"
+          rotation="0 0 0"
+          scale="1.700 1.600 1.000"
+        />
+        <!-- /Moutons -->
+
+        <!-- Cochons -->
         <FoodSphere
           animal-id="pig-1"
           animal-type="pig"
           position="14.5 0 1.5"
           scale="0.5 0.5 0.5"
         />
-
         <Animal
           id="pig-2"
           type="pig"
@@ -131,14 +147,12 @@ const allAssetsLoaded = ref(false);
           scale="0.05 0.05 0.05"
           :animated="true"
         />
-        <!-- Nourriture pour le cochon 2 -->
         <FoodSphere
           animal-id="pig-2"
           animal-type="pig"
           position="14.5 0 -2.5"
           scale="0.5 0.5 0.5"
         />
-
         <Animal
           id="pig-3"
           type="pig"
@@ -147,14 +161,33 @@ const allAssetsLoaded = ref(false);
           scale="0.05 0.05 0.05"
           :animated="true"
         />
-        <!-- Nourriture pour le cochon 3 -->
         <FoodSphere
           animal-id="pig-3"
           animal-type="pig"
           position="18 0 0.5"
           scale="0.5 0.5 0.5"
         />
+        <TeleportPanel
+          label="Cochons"
+          position="12.852 -0.022 -14.270"
+          rotation="0 90 0"
+          scale="1.0 1.0 1.0"
+          text-position="12.936 1.237 -12.917"
+          text-rotation="0 90 0"
+          text-scale="0.55 0.55 0.55"
+          :teleport-x="12.8"
+          :teleport-y="0"
+          :teleport-z="0"
+          :teleport-rot="0"
+        />
+        <ReturnDoor
+          position="13.997 0.928 -3.716"
+          rotation="0 0 0"
+          scale="1.700 1.600 1.000"
+        />
+        <!-- /Cochons -->
 
+        <!-- Vaches -->
         <Animal
           id="cow-1"
           type="cow"
@@ -163,14 +196,33 @@ const allAssetsLoaded = ref(false);
           scale="0.45 0.45 0.45"
           :animated="true"
         />
-        <!-- Nourriture pour la vache -->
         <FoodSphere
           animal-id="cow-1"
           animal-type="cow"
           position="27 0 -3"
           scale="0.5 0.5 0.5"
         />
+        <TeleportPanel
+          label="Vaches"
+          position="0 -100 0"
+          rotation="0 0 0"
+          scale="0 0 0"
+          text-position="12.935 1.278 -14.281"
+          text-rotation="0 90 0"
+          text-scale="0.510 0.200 0.300"
+          :teleport-x="20.8"
+          :teleport-y="0"
+          :teleport-z="0"
+          :teleport-rot="0"
+        />
+        <ReturnDoor
+          position="23.160 0.937 -3.604"
+          rotation="0 0 0"
+          scale="1.700 1.600 1.000"
+        />
+        <!-- /Vaches -->
 
+        <!-- Poules -->
         <Animal
           type="chicken"
           position="1.466 0 -11.917"
@@ -192,37 +244,6 @@ const allAssetsLoaded = ref(false);
           scale="0.01 0.01 0.01"
           :animated="true"
         />
-
-        <!-- Panneaux de téléportation -->
-        <!-- cochons -->
-        <TeleportPanel
-          label="Cochons"
-          position="12.852 -0.022 -14.270"
-          rotation="0 90 0"
-          scale="1.0 1.0 1.0"
-          text-position="12.936 1.237 -12.917"
-          text-rotation="0 90 0"
-          text-scale="0.55 0.55 0.55"
-          :teleport-x="12.8"
-          :teleport-y="0"
-          :teleport-z="0"
-          :teleport-rot="0"
-        />
-        <!-- vache -->
-        <TeleportPanel
-          label="Vaches"
-          position="0 -100 0"
-          rotation="0 0 0"
-          scale="0 0 0"
-          text-position="12.935 1.278 -14.281"
-          text-rotation="0 90 0"
-          text-scale="0.510 0.200 0.300"
-          :teleport-x="20.8"
-          :teleport-y="0"
-          :teleport-z="0"
-          :teleport-rot="0"
-        />
-        <!-- poules -->
         <TeleportPanel
           label="Poules"
           position="0 -100 0"
@@ -236,46 +257,12 @@ const allAssetsLoaded = ref(false);
           :teleport-z="-8.8"
           :teleport-rot="0"
         />
-        <!-- moutons -->
-        <TeleportPanel
-          label="Moutons"
-          position="0 -100 0"
-          rotation="0 0 0"
-          scale="0 0 0"
-          text-position="13.007 1.222 -15.518"
-          text-rotation="0 90 0"
-          text-scale="0.510 0.500 0.300"
-          :teleport-x="5.6"
-          :teleport-y="0"
-          :teleport-z="0"
-          :teleport-rot="0"
-        />
-
-        <!-- Portes de l'enclos avec de la téléportation -->
-        <!-- Porte 1 (Moutons)-->
-        <ReturnDoor
-          position="4.993 0.924 -3.786"
-          rotation="0 0 0"
-          scale="1.700 1.600 1.000"
-        />
-        <!-- Porte 2 (Cochons)-->
-        <ReturnDoor
-          position="13.997 0.928 -3.716"
-          rotation="0 0 0"
-          scale="1.700 1.600 1.000"
-        />
-        <!-- Porte 3 (vache)-->
-        <ReturnDoor
-          position="23.160 0.937 -3.604"
-          rotation="0 0 0"
-          scale="1.700 1.600 1.000"
-        />
-        <!-- Porte 4 (Poules) -->
         <ReturnDoor
           position="4.101 0.890 -14.271"
           rotation="0 -90.000 0"
           scale="3.190 1.880 1"
         />
+        <!-- /Poules -->
       </a-entity>
     </template>
 
