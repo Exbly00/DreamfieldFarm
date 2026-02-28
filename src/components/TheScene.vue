@@ -21,6 +21,10 @@ const allAssetsLoaded = ref(false);
       ></a-asset-item>
       <a-asset-item id="farm-model" src="assets/farm/farm.glb"></a-asset-item>
       <a-asset-item id="grain-model" src="assets/grain.glb"></a-asset-item>
+      <a-asset-item
+        id="carrot-model"
+        src="assets/low_poly_carrot.glb"
+      ></a-asset-item>
       <!-- Assets des animaux -->
       <a-asset-item
         id="sheep-model"

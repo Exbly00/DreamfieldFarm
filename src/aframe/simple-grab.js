@@ -163,13 +163,13 @@ AFRAME.registerComponent("simple-grab", {
   },
 
   onGrab: function (evt) {
-    // Si c'est un FoodSphere (a feed-animal), basculer vers les mini-sphères
+    // Si c'est un FoodSphere (a feed-animal), basculer vers la sphère
     if (this.el.components["feed-animal"]) {
       const bagModel = this.el.querySelector(".grain-bag-model");
-      const grainBunch = this.el.querySelector(".grain-bunch");
+      const grainSphere = this.el.querySelector(".grain-sphere");
 
       if (bagModel) bagModel.setAttribute("visible", false);
-      if (grainBunch) grainBunch.setAttribute("visible", true);
+      if (grainSphere) grainSphere.setAttribute("visible", true);
     }
   },
 
@@ -177,10 +177,10 @@ AFRAME.registerComponent("simple-grab", {
     // Si c'est un FoodSphere, revenir au sac
     if (this.el.components["feed-animal"]) {
       const bagModel = this.el.querySelector(".grain-bag-model");
-      const grainBunch = this.el.querySelector(".grain-bunch");
+      const grainSphere = this.el.querySelector(".grain-sphere");
 
       if (bagModel) bagModel.setAttribute("visible", true);
-      if (grainBunch) grainBunch.setAttribute("visible", false);
+      if (grainSphere) grainSphere.setAttribute("visible", false);
     }
   },
 
