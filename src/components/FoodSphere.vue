@@ -4,7 +4,6 @@
     :scale="scale"
     :grain-dispenser="`animalId: ${animalId}; animalType: ${animalType}`"
   >
-    <!-- Modèle GLTF du sac (toujours visible au sol) -->
     <a-entity gltf-model="#grain-model" clickable></a-entity>
   </a-entity>
 </template>

@@ -31,7 +31,6 @@ const props = defineProps({
   },
 });
 
-// Mapping des types d'animaux vers leurs modèles
 const animalModelId = computed(() => `#${props.type}-model`);
 </script>
 
@@ -43,7 +42,6 @@ const animalModelId = computed(() => `#${props.type}-model`);
     :scale="scale"
     animal-feedable
   >
-    <!-- Modèle 3D de l'animal avec animation-mixer -->
     <a-entity
       :gltf-model="animalModelId"
       :animation-mixer="animated ? 'clip: *' : ''"

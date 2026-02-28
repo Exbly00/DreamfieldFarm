@@ -1,10 +1,8 @@
-// Component pour rendre les animaux clickables et détecter si on a des graines dans la main
 AFRAME.registerComponent("animal-feedable", {
   init: function () {
     this.onClick = this.onClick.bind(this);
     this.el.addEventListener("click", this.onClick);
 
-    // Configuration des cœurs par type d'animal
     this.heartConfig = {
       sheep: { y: 5.967, z: 3.198, scale: 0.002, offsetX: 0.5 },
       pig: { y: 25, z: 19, scale: 0.012, offsetX: 3 },
@@ -74,7 +72,6 @@ AFRAME.registerComponent("animal-feedable", {
       }, 320);
     }, 300);
 
-    // Créer les cœurs
     this.createHearts(animalEl, animalType);
   },
 

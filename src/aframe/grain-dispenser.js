@@ -1,4 +1,3 @@
-// Component qui distribue des graines dans la main quand on clique sur le sac
 AFRAME.registerComponent("grain-dispenser", {
   schema: {
     animalId: { type: "string", default: "" },
@@ -19,7 +18,6 @@ AFRAME.registerComponent("grain-dispenser", {
     const currentGrab = grabSystem.getCurrentGrab(hand);
     if (currentGrab) return;
 
-    // Créer une poignée de graines
     this.createGrainHandful(hand);
   },
 
@@ -31,7 +29,6 @@ AFRAME.registerComponent("grain-dispenser", {
     grainHandful.setAttribute("data-animal-id", this.data.animalId);
     grainHandful.setAttribute("data-animal-type", this.data.animalType);
 
-    // Créer les 6 sphères de graines avec différentes tailles et couleurs
     const spheresData = [
       { radius: 0.25, color: "#FFD700", position: "0 0 0" },
       { radius: 0.22, color: "#FFC700", position: "-0.28 -0.08 0.06" },
