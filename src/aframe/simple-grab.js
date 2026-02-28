@@ -1,19 +1,18 @@
-import { copyPosition, copyRotation } from '../utils/aframe.js';
-import Keyboard from '../utils/keyboard.js';
+import { copyPosition, copyRotation } from "../utils/aframe.js";
+import Keyboard from "../utils/keyboard.js";
 
-
-AFRAME.registerSystem('simple-grab', {
+AFRAME.registerSystem("simple-grab", {
   schema: {
-    allowMidAirDrop: {type: 'boolean', default: false},
-    handRight: {type: 'selector', default: '#hand-right'},
-    handLeft: {type: 'selector', default: '#hand-left'},
-    dummyHandRight: {type: 'selector', default: '#dummy-hand-right'},
-    dummyHandLeft: {type: 'selector', default: '#dummy-hand-left'},
-    nonVrCursor: {type: 'selector', default: '[cursor]'},
-    leftDummyHandKey: {type: 'string', default: 'ShiftLeft'},
-    grabEventName:  {type: 'string', default: 'grab'},
-    dropEventName:  {type: 'string', default: 'drop'},
-    undropEventName:  {type: 'string', default: 'undrop'},
+    allowMidAirDrop: { type: "boolean", default: false },
+    handRight: { type: "selector", default: "#hand-right" },
+    handLeft: { type: "selector", default: "#hand-left" },
+    dummyHandRight: { type: "selector", default: "#dummy-hand-right" },
+    dummyHandLeft: { type: "selector", default: "#dummy-hand-left" },
+    nonVrCursor: { type: "selector", default: "[cursor]" },
+    leftDummyHandKey: { type: "string", default: "ShiftLeft" },
+    grabEventName: { type: "string", default: "grab" },
+    dropEventName: { type: "string", default: "drop" },
+    undropEventName: { type: "string", default: "undrop" },
   },
 
   init: function () {
@@ -35,10 +34,10 @@ AFRAME.registerSystem('simple-grab', {
       this.onSceneClick = this.onSceneClick.bind(this);
       this.onLeftHandTrigger = this.onLeftHandTrigger.bind(this);
       this.onRightHandTrigger = this.onRightHandTrigger.bind(this);
-      document.addEventListener('click', this.onSceneClick);
+      document.addEventListener("click", this.onSceneClick);
       // For VR, listen to the controller trigger events
-      this.leftHand.addEventListener('triggerdown', this.onLeftHandTrigger);
-      this.rightHand.addEventListener('triggerdown', this.onRightHandTrigger);
+      this.leftHand.addEventListener("triggerdown", this.onLeftHandTrigger);
+      this.rightHand.addEventListener("triggerdown", this.onRightHandTrigger);
     }
   },
 
@@ -60,31 +59,24 @@ AFRAME.registerSystem('simple-grab', {
     const currentGrab = this.getCurrentGrab(hand);
     if (currentGrab === null) return;
     this.removeCurrentGrab(hand, currentGrab, null);
-    currentGrab.components['simple-grab'].grabbedBy = null;
+    currentGrab.components["simple-grab"].grabbedBy = null;
   },
 
   setCurrentGrab: function (hand, el) {
     this.currentGrab.set(hand, el);
-    
-    // Cacher complètement la main VR quand on grab un sac de grain
-    if ((hand === this.leftHand || hand === this.rightHand) && el.components['feed-animal']) {
-      // Cacher tous les mesh de la main
-      const handObject = hand.object3D;
-      if (handObject) {
-        handObject.traverse((node) => {
-          if (node.isMesh) {
-            node.visible = false;
-          }
-        });
+
+    // Cacher le modèle de la main VR quand on grab
+    if (hand === this.leftHand || hand === this.rightHand) {
+      const handControlsModel = hand.getObject3D("mesh");
+      if (handControlsModel) {
+        handControlsModel.visible = false;
       }
-      // Marquer la main comme cachée
-      hand.setAttribute('data-hand-hidden', 'true');
     }
-    
+
     // Emit the grab event on: the grabbed entity, the hand and the scene
-    el.emit(this.data.grabEventName, {hand, el});
-    hand.emit(this.data.grabEventName, {hand, el});
-    this.el.emit(this.data.grabEventName, {hand, el});
+    el.emit(this.data.grabEventName, { hand, el });
+    hand.emit(this.data.grabEventName, { hand, el });
+    this.el.emit(this.data.grabEventName, { hand, el });
   },
 
   getCurrentGrab: function (hand) {
@@ -93,43 +85,45 @@ AFRAME.registerSystem('simple-grab', {
 
   removeCurrentGrab: function (hand, el, dropZone) {
     this.currentGrab.set(hand, null);
-    
+
     // Restaurer le scale original si c'est un sac de grain
-    if (el.components['simple-grab'] && el.components['simple-grab'].originalScale) {
-      const originalScale = el.components['simple-grab'].originalScale;
-      el.setAttribute('scale', `${originalScale.x} ${originalScale.y} ${originalScale.z}`);
-      el.components['simple-grab'].originalScale = null;
+    if (
+      el.components["simple-grab"] &&
+      el.components["simple-grab"].originalScale
+    ) {
+      const originalScale = el.components["simple-grab"].originalScale;
+      el.setAttribute(
+        "scale",
+        `${originalScale.x} ${originalScale.y} ${originalScale.z}`,
+      );
+      el.components["simple-grab"].originalScale = null;
     }
-    
-    // Réafficher complètement la main VR quand on drop un sac de grain
-    if ((hand === this.leftHand || hand === this.rightHand) && hand.getAttribute('data-hand-hidden') === 'true') {
-      const handObject = hand.object3D;
-      if (handObject) {
-        handObject.traverse((node) => {
-          if (node.isMesh) {
-            node.visible = true;
-          }
-        });
+
+    // Réafficher le modèle de la main VR quand on drop
+    if (hand === this.leftHand || hand === this.rightHand) {
+      const handControlsModel = hand.getObject3D("mesh");
+      if (handControlsModel) {
+        handControlsModel.visible = true;
       }
-      hand.removeAttribute('data-hand-hidden');
     }
-    
+
     // Emit the drop event on: the grabbed entity, the hand, the scene and the drop zone (if any)
-    el.emit(this.data.dropEventName, {hand, el, dropZone});
-    hand.emit(this.data.dropEventName, {hand, el, dropZone});
-    if (dropZone) dropZone.emit(this.data.dropEventName, {hand, el, dropZone});
-    this.el.emit(this.data.dropEventName, {hand, el, dropZone});
+    el.emit(this.data.dropEventName, { hand, el, dropZone });
+    hand.emit(this.data.dropEventName, { hand, el, dropZone });
+    if (dropZone)
+      dropZone.emit(this.data.dropEventName, { hand, el, dropZone });
+    this.el.emit(this.data.dropEventName, { hand, el, dropZone });
   },
 
   removeFromDropZone: function (hand, el, dropZone) {
-    dropZone.emit(this.data.undropEventName, {hand, el, dropZone});
-    this.el.emit(this.data.undropEventName, {hand, el, dropZone});
+    dropZone.emit(this.data.undropEventName, { hand, el, dropZone });
+    this.el.emit(this.data.undropEventName, { hand, el, dropZone });
   },
 
   getDummyHand: function () {
-    return this.keyboard.isKeyDown(this.data.leftDummyHandKey) ?
-           this.dummyHandLeft :
-           this.dummyHandRight;
+    return this.keyboard.isKeyDown(this.data.leftDummyHandKey)
+      ? this.dummyHandLeft
+      : this.dummyHandRight;
   },
 
   getHand: function (evt) {
@@ -146,14 +140,12 @@ AFRAME.registerSystem('simple-grab', {
       if (!isLeftHand && !isRightHand) return null;
       return cursor;
     }
-  }
-
+  },
 });
 
-AFRAME.registerComponent('simple-grab', {
-
+AFRAME.registerComponent("simple-grab", {
   schema: {
-    event: {type: 'string', default: 'click'},
+    event: { type: "string", default: "click" },
   },
 
   init: function () {
@@ -162,33 +154,33 @@ AFRAME.registerComponent('simple-grab', {
     this.grabbedBy = null;
     this.actualDropZone = null;
     this.originalScale = null; // Pour sauvegarder le scale original
-    
+
     // Écouter les événements grab/drop pour basculer entre sac et mini-sphères
     this.onGrab = this.onGrab.bind(this);
     this.onDrop = this.onDrop.bind(this);
-    this.el.addEventListener('grab', this.onGrab);
-    this.el.addEventListener('drop', this.onDrop);
+    this.el.addEventListener("grab", this.onGrab);
+    this.el.addEventListener("drop", this.onDrop);
   },
-  
+
   onGrab: function (evt) {
     // Si c'est un FoodSphere (a feed-animal), basculer vers les mini-sphères
-    if (this.el.components['feed-animal']) {
-      const bagModel = this.el.querySelector('.grain-bag-model');
-      const grainBunch = this.el.querySelector('.grain-bunch');
-      
-      if (bagModel) bagModel.setAttribute('visible', false);
-      if (grainBunch) grainBunch.setAttribute('visible', true);
+    if (this.el.components["feed-animal"]) {
+      const bagModel = this.el.querySelector(".grain-bag-model");
+      const grainBunch = this.el.querySelector(".grain-bunch");
+
+      if (bagModel) bagModel.setAttribute("visible", false);
+      if (grainBunch) grainBunch.setAttribute("visible", true);
     }
   },
-  
+
   onDrop: function (evt) {
     // Si c'est un FoodSphere, revenir au sac
-    if (this.el.components['feed-animal']) {
-      const bagModel = this.el.querySelector('.grain-bag-model');
-      const grainBunch = this.el.querySelector('.grain-bunch');
-      
-      if (bagModel) bagModel.setAttribute('visible', true);
-      if (grainBunch) grainBunch.setAttribute('visible', false);
+    if (this.el.components["feed-animal"]) {
+      const bagModel = this.el.querySelector(".grain-bag-model");
+      const grainBunch = this.el.querySelector(".grain-bunch");
+
+      if (bagModel) bagModel.setAttribute("visible", true);
+      if (grainBunch) grainBunch.setAttribute("visible", false);
     }
   },
 
@@ -202,20 +194,30 @@ AFRAME.registerComponent('simple-grab', {
     if (currentGrab === this.el) return;
 
     this.system.isGrabInProgress = true;
-    if (this.system.timerGrabInProgress) clearTimeout(this.system.timerGrabInProgress);
-    this.system.timerGrabInProgress = setTimeout(() => this.system.isGrabInProgress = false, 500);
+    if (this.system.timerGrabInProgress)
+      clearTimeout(this.system.timerGrabInProgress);
+    this.system.timerGrabInProgress = setTimeout(
+      () => (this.system.isGrabInProgress = false),
+      500,
+    );
 
     // If something already grabbed, switch it
     if (currentGrab) {
       copyPosition(this.el, currentGrab);
       copyRotation(this.el, currentGrab);
-      currentGrab.components['simple-grab'].grabbedBy = null;
+      currentGrab.components["simple-grab"].grabbedBy = null;
       // If the object was in a drop zone, remove it from there
       // and add the grabbed object to the drop zone
       if (this.actualDropZone) {
-        currentGrab.components['simple-grab'].actualDropZone = this.actualDropZone;
-        this.actualDropZone.components['simple-grab-drop-zone'].droppedEl = currentGrab;
-        this.system.removeCurrentGrab(this.grabbedBy, currentGrab, this.actualDropZone);
+        currentGrab.components["simple-grab"].actualDropZone =
+          this.actualDropZone;
+        this.actualDropZone.components["simple-grab-drop-zone"].droppedEl =
+          currentGrab;
+        this.system.removeCurrentGrab(
+          this.grabbedBy,
+          currentGrab,
+          this.actualDropZone,
+        );
       } else {
         this.system.removeCurrentGrab(this.grabbedBy, currentGrab, null);
       }
@@ -224,18 +226,27 @@ AFRAME.registerComponent('simple-grab', {
     this.system.setCurrentGrab(this.grabbedBy, this.el);
 
     // Si c'est un sac de grain (a le component feed-animal), réduire sa taille
-    if (this.el.components['feed-animal']) {
-      const currentScale = this.el.getAttribute('scale');
-      this.originalScale = { x: currentScale.x, y: currentScale.y, z: currentScale.z };
-      this.el.setAttribute('scale', '0.15 0.15 0.15');
+    if (this.el.components["feed-animal"]) {
+      const currentScale = this.el.getAttribute("scale");
+      this.originalScale = {
+        x: currentScale.x,
+        y: currentScale.y,
+        z: currentScale.z,
+      };
+      this.el.setAttribute("scale", "0.15 0.15 0.15");
     }
 
     // If the object was grabbed from a drop zone, remove it from there
     if (this.actualDropZone) {
       if (!currentGrab) {
         // The drop zone is now empty, trigger an undrop event
-        this.system.removeFromDropZone(this.grabbedBy, this.actualDropZone.components['simple-grab-drop-zone'].droppedEl, this.actualDropZone);
-        this.actualDropZone.components['simple-grab-drop-zone'].droppedEl = null;
+        this.system.removeFromDropZone(
+          this.grabbedBy,
+          this.actualDropZone.components["simple-grab-drop-zone"].droppedEl,
+          this.actualDropZone,
+        );
+        this.actualDropZone.components["simple-grab-drop-zone"].droppedEl =
+          null;
       }
       this.actualDropZone = null;
     }
@@ -249,19 +260,17 @@ AFRAME.registerComponent('simple-grab', {
     if (!this.grabbedBy) return;
     copyPosition(this.grabbedBy, this.el);
     copyRotation(this.grabbedBy, this.el, true);
-  }
-
+  },
 });
 
-AFRAME.registerComponent('simple-grab-drop-zone', {
-
+AFRAME.registerComponent("simple-grab-drop-zone", {
   schema: {
-    dropOnly: {type: 'boolean', default: false},
-    event: {type: 'string', default: 'click'},
+    dropOnly: { type: "boolean", default: false },
+    event: { type: "string", default: "click" },
   },
 
   init: function () {
-    this.system = this.el.sceneEl.systems['simple-grab'];
+    this.system = this.el.sceneEl.systems["simple-grab"];
     this.onEvent = this.onEvent.bind(this);
     this.droppedEl = null;
     this.el.addEventListener(this.data.event, this.onEvent);
@@ -278,28 +287,33 @@ AFRAME.registerComponent('simple-grab-drop-zone', {
     if (this.data.dropOnly && this.droppedEl !== null) return;
 
     this.system.isGrabInProgress = true;
-    if (this.system.timerGrabInProgress) clearTimeout(this.system.timerGrabInProgress);
-    this.system.timerGrabInProgress = setTimeout(() => this.system.isGrabInProgress = false, 500);
+    if (this.system.timerGrabInProgress)
+      clearTimeout(this.system.timerGrabInProgress);
+    this.system.timerGrabInProgress = setTimeout(
+      () => (this.system.isGrabInProgress = false),
+      500,
+    );
 
     // drop the current grab
     if (currentGrab) {
-      currentGrab.components['simple-grab'].grabbedBy = null;
-      currentGrab.components['simple-grab'].actualDropZone = this.el;
+      currentGrab.components["simple-grab"].grabbedBy = null;
+      currentGrab.components["simple-grab"].actualDropZone = this.el;
       this.system.removeCurrentGrab(this.grabbedBy, currentGrab, this.el);
       copyPosition(this.el, currentGrab);
       copyRotation(this.el, currentGrab, true);
-      if (this.data.dropOnly) currentGrab.removeAttribute('simple-grab');
+      if (this.data.dropOnly) currentGrab.removeAttribute("simple-grab");
     }
 
     // if something was already in there, put it in the hand
     if (!this.data.dropOnly && this.droppedEl !== null) {
       this.system.setCurrentGrab(this.grabbedBy, this.droppedEl);
-      this.droppedEl.components['simple-grab'].grabbedBy = this.grabbedBy;
-      this.droppedEl.components['simple-grab'].actualDropZone = null;
+      this.droppedEl.components["simple-grab"].grabbedBy = this.grabbedBy;
+      this.droppedEl.components["simple-grab"].actualDropZone = null;
       const oldDroppedEl = this.droppedEl;
       this.droppedEl = null;
       // if the drop zone is now empty, trigger an undrop event
-      if (!currentGrab) this.system.removeFromDropZone(this.grabbedBy, oldDroppedEl, this.el);
+      if (!currentGrab)
+        this.system.removeFromDropZone(this.grabbedBy, oldDroppedEl, this.el);
     }
 
     if (currentGrab) this.droppedEl = currentGrab;
@@ -308,5 +322,4 @@ AFRAME.registerComponent('simple-grab-drop-zone', {
   remove: function () {
     this.el.removeEventListener(this.data.event, this.onEvent);
   },
-
 });
