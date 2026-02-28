@@ -5,6 +5,7 @@ import Animal from "./Animal.vue";
 import TeleportPanel from "./TeleportPanel.vue";
 import ReturnDoor from "./ReturnDoor.vue";
 import FoodSphere from "./FoodSphere.vue";
+import "../aframe/simple-grab.js";
 
 const allAssetsLoaded = ref(false);
 </script>

@@ -65,6 +65,22 @@ AFRAME.registerSystem('simple-grab', {
 
   setCurrentGrab: function (hand, el) {
     this.currentGrab.set(hand, el);
+    
+    // Cacher complètement la main VR quand on grab un sac de grain
+    if ((hand === this.leftHand || hand === this.rightHand) && el.components['feed-animal']) {
+      // Cacher tous les mesh de la main
+      const handObject = hand.object3D;
+      if (handObject) {
+        handObject.traverse((node) => {
+          if (node.isMesh) {
+            node.visible = false;
+          }
+        });
+      }
+      // Marquer la main comme cachée
+      hand.setAttribute('data-hand-hidden', 'true');
+    }
+    
     // Emit the grab event on: the grabbed entity, the hand and the scene
     el.emit(this.data.grabEventName, {hand, el});
     hand.emit(this.data.grabEventName, {hand, el});
@@ -77,6 +93,27 @@ AFRAME.registerSystem('simple-grab', {
 
   removeCurrentGrab: function (hand, el, dropZone) {
     this.currentGrab.set(hand, null);
+    
+    // Restaurer le scale original si c'est un sac de grain
+    if (el.components['simple-grab'] && el.components['simple-grab'].originalScale) {
+      const originalScale = el.components['simple-grab'].originalScale;
+      el.setAttribute('scale', `${originalScale.x} ${originalScale.y} ${originalScale.z}`);
+      el.components['simple-grab'].originalScale = null;
+    }
+    
+    // Réafficher complètement la main VR quand on drop un sac de grain
+    if ((hand === this.leftHand || hand === this.rightHand) && hand.getAttribute('data-hand-hidden') === 'true') {
+      const handObject = hand.object3D;
+      if (handObject) {
+        handObject.traverse((node) => {
+          if (node.isMesh) {
+            node.visible = true;
+          }
+        });
+      }
+      hand.removeAttribute('data-hand-hidden');
+    }
+    
     // Emit the drop event on: the grabbed entity, the hand, the scene and the drop zone (if any)
     el.emit(this.data.dropEventName, {hand, el, dropZone});
     hand.emit(this.data.dropEventName, {hand, el, dropZone});
@@ -124,6 +161,35 @@ AFRAME.registerComponent('simple-grab', {
     this.el.addEventListener(this.data.event, this.onEvent);
     this.grabbedBy = null;
     this.actualDropZone = null;
+    this.originalScale = null; // Pour sauvegarder le scale original
+    
+    // Écouter les événements grab/drop pour basculer entre sac et mini-sphères
+    this.onGrab = this.onGrab.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+    this.el.addEventListener('grab', this.onGrab);
+    this.el.addEventListener('drop', this.onDrop);
+  },
+  
+  onGrab: function (evt) {
+    // Si c'est un FoodSphere (a feed-animal), basculer vers les mini-sphères
+    if (this.el.components['feed-animal']) {
+      const bagModel = this.el.querySelector('.grain-bag-model');
+      const grainBunch = this.el.querySelector('.grain-bunch');
+      
+      if (bagModel) bagModel.setAttribute('visible', false);
+      if (grainBunch) grainBunch.setAttribute('visible', true);
+    }
+  },
+  
+  onDrop: function (evt) {
+    // Si c'est un FoodSphere, revenir au sac
+    if (this.el.components['feed-animal']) {
+      const bagModel = this.el.querySelector('.grain-bag-model');
+      const grainBunch = this.el.querySelector('.grain-bunch');
+      
+      if (bagModel) bagModel.setAttribute('visible', true);
+      if (grainBunch) grainBunch.setAttribute('visible', false);
+    }
   },
 
   onEvent: function (evt) {
@@ -156,6 +222,13 @@ AFRAME.registerComponent('simple-grab', {
     }
 
     this.system.setCurrentGrab(this.grabbedBy, this.el);
+
+    // Si c'est un sac de grain (a le component feed-animal), réduire sa taille
+    if (this.el.components['feed-animal']) {
+      const currentScale = this.el.getAttribute('scale');
+      this.originalScale = { x: currentScale.x, y: currentScale.y, z: currentScale.z };
+      this.el.setAttribute('scale', '0.15 0.15 0.15');
+    }
 
     // If the object was grabbed from a drop zone, remove it from there
     if (this.actualDropZone) {

@@ -1,11 +1,13 @@
 <template>
   <a-entity
     :position="position"
-    gltf-model="#grain-model"
     :scale="scale"
+    gltf-model="#grain-model"
     clickable
+    simple-grab
     :feed-animal="`animalId: ${animalId}; animalType: ${animalType}`"
-  ></a-entity>
+  >
+  </a-entity>
 </template>
 
 <script setup>
