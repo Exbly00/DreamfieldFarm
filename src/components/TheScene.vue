@@ -6,6 +6,8 @@ import TeleportPanel from "./TeleportPanel.vue";
 import ReturnDoor from "./ReturnDoor.vue";
 import FoodSphere from "./FoodSphere.vue";
 import "../aframe/simple-grab.js";
+import "../aframe/animal-feedable.js";
+import "../aframe/grain-dispenser.js";
 
 const allAssetsLoaded = ref(false);
 </script>
