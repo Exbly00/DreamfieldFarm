@@ -35,11 +35,13 @@ import "../aframe/physx-grab.js";
         obb-collider
         scale="0.5 0.5 0.5"
         position="0.3 -0.4 -1"
+        visible="false"
       ></a-box>
       <a-box
         id="dummy-hand-left"
         position="-0.3 -0.4 -0.5"
         obb-collider
+        visible="false"
       ></a-box>
     </a-entity>
 
