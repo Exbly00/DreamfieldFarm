@@ -18,20 +18,22 @@ AFRAME.registerComponent("feed-animal", {
     // Événement de clic - ne se déclenche que si pas grabbé
     this.el.addEventListener("click", (evt) => {
       // Ne pas nourrir si l'objet est actuellement grabbé
-      const simpleGrab = this.el.components['simple-grab'];
+      const simpleGrab = this.el.components["simple-grab"];
       if (simpleGrab && simpleGrab.grabbedBy) {
         return; // Le sac est dans une main, ne pas nourrir
       }
-      
+
       // Vérifier si on est en VR (le cursorEl est une main VR)
       const cursorEl = evt.detail?.cursorEl;
-      const isVRHand = cursorEl && (cursorEl.id === 'hand-left' || cursorEl.id === 'hand-right');
-      
+      const isVRHand =
+        cursorEl &&
+        (cursorEl.id === "hand-left" || cursorEl.id === "hand-right");
+
       // Si c'est en VR et que le sac vient d'être grabbé, ne pas nourrir
       if (isVRHand && simpleGrab && simpleGrab.grabbedBy) {
         return;
       }
-      
+
       if (!this.fedRecently) {
         this.feedAnimal();
       }
@@ -48,9 +50,9 @@ AFRAME.registerComponent("feed-animal", {
     this.fedRecently = true;
 
     // 1. Si le sac était grabbé, le drop
-    const simpleGrab = this.el.components['simple-grab'];
+    const simpleGrab = this.el.components["simple-grab"];
     if (simpleGrab && simpleGrab.grabbedBy) {
-      const grabSystem = this.el.sceneEl.systems['simple-grab'];
+      const grabSystem = this.el.sceneEl.systems["simple-grab"];
       grabSystem.removeCurrentGrab(simpleGrab.grabbedBy, this.el, null);
       simpleGrab.grabbedBy = null;
     }
