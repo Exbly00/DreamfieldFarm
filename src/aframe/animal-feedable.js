@@ -29,9 +29,35 @@ AFRAME.registerComponent("animal-feedable", {
       volume: 2,
     });
     this.el.sceneEl.appendChild(soundEntity);
+    setTimeout(() => soundEntity.parentNode.removeChild(soundEntity), 3000);
+  },
+
+  animateJump: function (animalEl, pos) {
+    animalEl.removeAttribute("animation__jump-up");
+    animalEl.removeAttribute("animation__jump-down");
+
+    const posStr = `${pos.x} ${pos.y} ${pos.z}`;
+    const jumpStr = `${pos.x} ${pos.y + 0.3} ${pos.z}`;
+
+    animalEl.setAttribute("animation__jump-up", {
+      property: "position",
+      from: posStr,
+      to: jumpStr,
+      dur: 300,
+      easing: "easeOutQuad",
+    });
+
     setTimeout(() => {
-      soundEntity.parentNode.removeChild(soundEntity);
-    }, 3000);
+      animalEl.removeAttribute("animation__jump-up");
+      animalEl.setAttribute("animation__jump-down", {
+        property: "position",
+        from: jumpStr,
+        to: posStr,
+        dur: 300,
+        easing: "easeInQuad",
+      });
+      setTimeout(() => animalEl.removeAttribute("animation__jump-down"), 320);
+    }, 300);
   },
 
   onClick: function (evt) {
@@ -52,52 +78,17 @@ AFRAME.registerComponent("animal-feedable", {
   },
 
   feedAnimal: function (grainHandful, animalType) {
-    const animalEl = this.el;
     const grabSystem = this.el.sceneEl.systems["simple-grab"];
     const grainGrabComp = grainHandful.components["simple-grab"];
 
-    if (grainGrabComp && grainGrabComp.grabbedBy) {
+    if (grainGrabComp?.grabbedBy) {
       grabSystem.removeCurrentGrab(grainGrabComp.grabbedBy, grainHandful, null);
     }
     grainHandful.parentNode.removeChild(grainHandful);
 
     this.playAnimalSound(animalType);
-
-    const animalPosition = animalEl.getAttribute("position");
-    const originalPosition = {
-      x: animalPosition.x,
-      y: animalPosition.y,
-      z: animalPosition.z,
-    };
-
-    animalEl.removeAttribute("animation__jump-up");
-    animalEl.removeAttribute("animation__jump-down");
-
-    animalEl.setAttribute("animation__jump-up", {
-      property: "position",
-      from: `${originalPosition.x} ${originalPosition.y} ${originalPosition.z}`,
-      to: `${originalPosition.x} ${originalPosition.y + 0.3} ${originalPosition.z}`,
-      dur: 300,
-      easing: "easeOutQuad",
-    });
-
-    setTimeout(() => {
-      animalEl.removeAttribute("animation__jump-up");
-
-      animalEl.setAttribute("animation__jump-down", {
-        property: "position",
-        from: `${originalPosition.x} ${originalPosition.y + 0.3} ${originalPosition.z}`,
-        to: `${originalPosition.x} ${originalPosition.y} ${originalPosition.z}`,
-        dur: 300,
-        easing: "easeInQuad",
-      });
-
-      setTimeout(() => {
-        animalEl.removeAttribute("animation__jump-down");
-      }, 320);
-    }, 300);
-
-    this.createHearts(animalEl, animalType);
+    this.animateJump(this.el, this.el.getAttribute("position"));
+    this.createHearts(this.el, animalType);
   },
 
   createHearts: function (animalEl, animalType) {
@@ -106,7 +97,6 @@ AFRAME.registerComponent("animal-feedable", {
     for (let i = 0; i < 3; i++) {
       setTimeout(() => {
         const heart = document.createElement("a-entity");
-
         const offsetX = (Math.random() - 0.5) * config.offsetX;
 
         heart.setAttribute("position", `${offsetX} ${config.y} ${config.z}`);
@@ -115,8 +105,6 @@ AFRAME.registerComponent("animal-feedable", {
           "scale",
           `${config.scale} ${config.scale} ${config.scale}`,
         );
-        heart.setAttribute("visible", true);
-
         heart.setAttribute("animation__rise", {
           property: "position.y",
           from: config.y,
@@ -124,7 +112,6 @@ AFRAME.registerComponent("animal-feedable", {
           dur: 1500,
           easing: "easeOutQuad",
         });
-
         heart.setAttribute("animation__fade", {
           property: "scale",
           to: "0.0001 0.0001 0.0001",
@@ -133,12 +120,7 @@ AFRAME.registerComponent("animal-feedable", {
         });
 
         animalEl.appendChild(heart);
-
-        setTimeout(() => {
-          if (heart.parentNode) {
-            heart.parentNode.removeChild(heart);
-          }
-        }, 1500);
+        setTimeout(() => heart.parentNode?.removeChild(heart), 1500);
       }, i * 200);
     }
   },

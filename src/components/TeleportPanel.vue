@@ -56,7 +56,6 @@ const props = defineProps({
 
 <template>
   <a-entity>
-    <!-- Panneau en bois -->
     <a-entity
       gltf-model="#wood-sign-model"
       :position="position"
