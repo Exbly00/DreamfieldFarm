@@ -288,6 +288,10 @@ onMounted(() => {
           scale="0.01 0.01 0.01"
           :animated="true"
         />
+        <a-entity
+          position="1.4 1 -11.5"
+          sound="src: #chicken-cluck; autoplay: true; loop: true; volume: 2; positional: true; refDistance: 3; rolloffFactor: 2; distanceModel: exponential"
+        ></a-entity>
         <TeleportPanel
           label="Poules"
           position="0 -100 0"
