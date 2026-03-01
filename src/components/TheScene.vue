@@ -61,6 +61,11 @@ onMounted(() => {
         src="/assets/574731__crattray1997__farm-ambience-2-4416.wav"
         preload="auto"
       ></audio>
+      <audio
+        id="sheep-bleat"
+        src="/assets/321967__n_audioman__sheep_bleat.wav"
+        preload="auto"
+      ></audio>
     </a-assets>
 
     <template v-if="allAssetsLoaded">

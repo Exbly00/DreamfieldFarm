@@ -38,6 +38,20 @@ AFRAME.registerComponent("animal-feedable", {
     }
     grainHandful.parentNode.removeChild(grainHandful);
 
+    // Jouer le son selon le type d'animal
+    if (animalType === "sheep") {
+      const soundEntity = document.createElement("a-entity");
+      soundEntity.setAttribute("sound", {
+        src: "#sheep-bleat",
+        autoplay: true,
+        volume: 2,
+      });
+      this.el.sceneEl.appendChild(soundEntity);
+      setTimeout(() => {
+        soundEntity.parentNode.removeChild(soundEntity);
+      }, 3000);
+    }
+
     const animalPosition = animalEl.getAttribute("position");
     const originalPosition = {
       x: animalPosition.x,
