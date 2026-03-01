@@ -81,7 +81,7 @@ const allAssetsLoaded = ref(false);
           type="sheep"
           position="5.485 0 0.580"
           rotation="0.000 -140.011 0.000"
-          scale="0.30 0.30 0.30"
+          scale="0.243 0.243 0.243"
           :animated="true"
         />
         <FoodSphere
@@ -95,7 +95,7 @@ const allAssetsLoaded = ref(false);
           type="sheep"
           position="8.936 0 -0.790"
           rotation="0.000 156.792 0.000"
-          scale="0.30 0.30 0.30"
+          scale="0.243 0.243 0.243"
           :animated="true"
         />
         <FoodSphere
@@ -109,7 +109,7 @@ const allAssetsLoaded = ref(false);
           type="pig"
           position="14.098 0 1.154"
           rotation="0 -144.677 0"
-          scale="0.05 0.05 0.05"
+          scale="0.0405 0.0405 0.0405"
           :animated="true"
         />
         <TeleportPanel
@@ -144,7 +144,7 @@ const allAssetsLoaded = ref(false);
           type="pig"
           position="14.890 0 -2.075"
           rotation="0 138.989 0"
-          scale="0.05 0.05 0.05"
+          scale="0.0405 0.0405 0.0405"
           :animated="true"
         />
         <FoodSphere
@@ -158,7 +158,7 @@ const allAssetsLoaded = ref(false);
           type="pig"
           position="17.762 0 0.722"
           rotation="0 67.765 0"
-          scale="0.05 0.05 0.05"
+          scale="0.0405 0.0405 0.0405"
           :animated="true"
         />
         <FoodSphere
@@ -193,7 +193,7 @@ const allAssetsLoaded = ref(false);
           type="cow"
           position="27.005 0 -2.062"
           rotation="0 -122.027 0"
-          scale="0.45 0.45 0.45"
+          scale="0.3645 0.3645 0.3645"
           :animated="true"
         />
         <FoodSphere
