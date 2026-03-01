@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import TheCameraRig from "./TheCameraRig.vue";
 import Animal from "./Animal.vue";
 import TeleportPanel from "./TeleportPanel.vue";
@@ -10,6 +10,17 @@ import "../aframe/animal-feedable.js";
 import "../aframe/grain-dispenser.js";
 
 const allAssetsLoaded = ref(false);
+
+const startAmbientSound = () => {
+  const soundEl = document.querySelector("#ambient-sound");
+  if (soundEl && soundEl.components.sound) {
+    soundEl.components.sound.playSound();
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("click", startAmbientSound, { once: true });
+});
 </script>
 
 <template>
@@ -43,10 +54,23 @@ const allAssetsLoaded = ref(false);
         id="wood-sign-model"
         src="assets/stylized_wood_signs/scene.gltf"
       ></a-asset-item>
+
+      <!-- Sons -->
+      <audio
+        id="farm-ambience"
+        src="/assets/574731__crattray1997__farm-ambience-2-4416.wav"
+        preload="auto"
+      ></audio>
     </a-assets>
 
     <template v-if="allAssetsLoaded">
       <a-sky src="#sky-texture"></a-sky>
+
+      <!-- Son ambiant de ferme -->
+      <a-entity
+        id="ambient-sound"
+        sound="src: #farm-ambience; loop: true; volume: 4"
+      ></a-entity>
 
       <a-light type="ambient" color="#ffffff" intensity="0.6"></a-light>
       <a-light
@@ -249,7 +273,7 @@ const allAssetsLoaded = ref(false);
           position="0 -100 0"
           rotation="0 0 0"
           scale="0 0 0"
-          text-position="12.936 0.947 -14.251"
+          text-position="12.983 0.947 -14.251"
           text-rotation="0 90 0"
           text-scale="0.510 0.200 0.300"
           :teleport-x="0.8"
