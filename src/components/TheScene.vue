@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <a-scene background="color: #87CEEB">
+  <a-scene background="color: #87CEEB" stats>
     <a-assets @loaded="allAssetsLoaded = true">
       <img id="sky-texture" src="/assets/sky.jpg" />
       <img id="heart-texture" src="/assets/coeur.png" />
