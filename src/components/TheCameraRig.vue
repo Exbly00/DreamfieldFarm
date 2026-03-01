@@ -9,7 +9,7 @@ import "../aframe/physx-grab.js";
 <template>
   <a-entity
     id="camera-rig"
-    position="15.936 0 -14.227"
+    position="12.217 -0.100 -11.499"
     movement-controls="camera: #head;"
     disable-in-vr="component: movement-controls;"
   >
