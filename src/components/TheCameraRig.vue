@@ -68,7 +68,7 @@ import "../aframe/physx-grab.js";
       id="hand-right"
       hand-controls="hand: right"
       laser-controls="hand: right"
-      raycaster="far: 4; objects: [clickable]; showLine: true;"
+      raycaster="far: 0.5; objects: [clickable]; showLine: true;"
       position="0 1.5 0"
       obb-collider
     >
