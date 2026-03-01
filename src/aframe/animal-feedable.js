@@ -9,6 +9,29 @@ AFRAME.registerComponent("animal-feedable", {
       cow: { y: 4, z: 2.1, scale: 0.0013, offsetX: 0.5 },
       chicken: { y: 10, z: 5, scale: 0.005, offsetX: 0.5 },
     };
+
+    this.soundMap = {
+      sheep: "#sheep-bleat",
+      pig: "#pig-grunt",
+      cow: "#cow-moo",
+      chicken: "#chicken-cluck",
+    };
+  },
+
+  playAnimalSound: function (animalType) {
+    const soundSrc = this.soundMap[animalType];
+    if (!soundSrc) return;
+
+    const soundEntity = document.createElement("a-entity");
+    soundEntity.setAttribute("sound", {
+      src: soundSrc,
+      autoplay: true,
+      volume: 2,
+    });
+    this.el.sceneEl.appendChild(soundEntity);
+    setTimeout(() => {
+      soundEntity.parentNode.removeChild(soundEntity);
+    }, 3000);
   },
 
   onClick: function (evt) {
@@ -38,30 +61,7 @@ AFRAME.registerComponent("animal-feedable", {
     }
     grainHandful.parentNode.removeChild(grainHandful);
 
-    // Jouer le son selon le type d'animal
-    if (animalType === "sheep") {
-      const soundEntity = document.createElement("a-entity");
-      soundEntity.setAttribute("sound", {
-        src: "#sheep-bleat",
-        autoplay: true,
-        volume: 2,
-      });
-      this.el.sceneEl.appendChild(soundEntity);
-      setTimeout(() => {
-        soundEntity.parentNode.removeChild(soundEntity);
-      }, 3000);
-    } else if (animalType === "pig") {
-      const soundEntity = document.createElement("a-entity");
-      soundEntity.setAttribute("sound", {
-        src: "#pig-grunt",
-        autoplay: true,
-        volume: 2,
-      });
-      this.el.sceneEl.appendChild(soundEntity);
-      setTimeout(() => {
-        soundEntity.parentNode.removeChild(soundEntity);
-      }, 3000);
-    }
+    this.playAnimalSound(animalType);
 
     const animalPosition = animalEl.getAttribute("position");
     const originalPosition = {

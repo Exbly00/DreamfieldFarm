@@ -71,6 +71,16 @@ onMounted(() => {
         src="/assets/233177__jarredgibb__pig-grunt-and-squeal-4-96khz.wav"
         preload="auto"
       ></audio>
+      <audio
+        id="cow-moo"
+        src="/assets/700380__manofham__moo-3-moo-moo-the-cow.mp3"
+        preload="auto"
+      ></audio>
+      <audio
+        id="chicken-cluck"
+        src="/assets/724216__nickmaysoundmusic__chickens_waiting_to_be_fed_farm_light_wind_bird_song.wav"
+        preload="auto"
+      ></audio>
     </a-assets>
 
     <template v-if="allAssetsLoaded">
