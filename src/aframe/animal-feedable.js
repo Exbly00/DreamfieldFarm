@@ -50,6 +50,17 @@ AFRAME.registerComponent("animal-feedable", {
       setTimeout(() => {
         soundEntity.parentNode.removeChild(soundEntity);
       }, 3000);
+    } else if (animalType === "pig") {
+      const soundEntity = document.createElement("a-entity");
+      soundEntity.setAttribute("sound", {
+        src: "#pig-grunt",
+        autoplay: true,
+        volume: 2,
+      });
+      this.el.sceneEl.appendChild(soundEntity);
+      setTimeout(() => {
+        soundEntity.parentNode.removeChild(soundEntity);
+      }, 3000);
     }
 
     const animalPosition = animalEl.getAttribute("position");
