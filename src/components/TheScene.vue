@@ -71,6 +71,10 @@ onMounted(() => {
         id="grass-model"
         src="assets/low_poly_grass.glb"
       ></a-asset-item>
+      <a-asset-item
+        id="pickup-truck-model"
+        src="assets/farm_pickup_truck.glb"
+      ></a-asset-item>
 
       <!-- Sons -->
       <audio
@@ -141,6 +145,14 @@ onMounted(() => {
           position="8.879 0 -25.068"
           rotation="0 50.612 0"
           scale="0.25 0.25 0.25"
+          shadow="cast: true; receive: true"
+        ></a-entity>
+
+        <a-entity
+          gltf-model="#pickup-truck-model"
+          position="21.137 0 -22.995"
+          rotation="0 28.671 0"
+          scale="1.3 1.3 1.3"
           shadow="cast: true; receive: true"
         ></a-entity>
 
