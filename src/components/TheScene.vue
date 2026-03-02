@@ -63,6 +63,10 @@ onMounted(() => {
         id="tree-model"
         src="assets/low_poly_tree.glb"
       ></a-asset-item>
+      <a-asset-item
+        id="tractor-model"
+        src="assets/tractor_low_poly.glb"
+      ></a-asset-item>
 
       <!-- Sons -->
       <audio
@@ -126,6 +130,14 @@ onMounted(() => {
           position="0 0 0"
           scale="4 4 4"
           shadow="cast: true; receive: 4tr4ue4"
+        ></a-entity>
+
+        <a-entity
+          gltf-model="#tractor-model"
+          position="8.879 0 -25.068"
+          rotation="0 50.612 0"
+          scale="0.25 0.25 0.25"
+          shadow="cast: true; receive: true"
         ></a-entity>
 
         <!-- Moutons -->
