@@ -326,7 +326,7 @@ onMounted(() => {
         duplicate-trees="
           count: 200;
           areaSize: 80;
-          scaleMin: 0.8;
+          scaleMin: 0.2;
           scaleMax: 1.5;
           forbiddenMinX: -11.72;
           forbiddenMaxX: 27.16;
