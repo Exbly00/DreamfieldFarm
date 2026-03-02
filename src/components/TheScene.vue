@@ -79,6 +79,10 @@ onMounted(() => {
         id="bucket-model"
         src="assets/low_poly_bucket.glb"
       ></a-asset-item>
+      <a-asset-item
+        id="fountain-model"
+        src="assets/fountain.glb"
+      ></a-asset-item>
 
       <!-- Sons -->
       <audio
@@ -168,6 +172,15 @@ onMounted(() => {
           shadow="cast: true; receive: true"
         ></a-entity>
 
+        <a-entity
+          gltf-model="#fountain-model"
+          position="21.116 0 -28.239"
+          rotation="0 -180 0"
+          scale="0.005 0.005 0.005"
+          animation-mixer
+          shadow="cast: true; receive: true"
+        ></a-entity>
+
         <!-- Moutons -->
         <Animal
           id="sheep-1"
@@ -197,14 +210,6 @@ onMounted(() => {
           position="11.422 0 -2.525"
           scale="0.5 0.5 0.5"
         />
-        <Animal
-          id="pig-1"
-          type="pig"
-          position="14.098 0 1.154"
-          rotation="0 -144.677 0"
-          scale="0.0405 0.0405 0.0405"
-          :animated="true"
-        />
         <TeleportPanel
           label="Moutons"
           position="0 -100 0"
@@ -231,6 +236,14 @@ onMounted(() => {
           animal-type="pig"
           position="14.5 0 1.5"
           scale="0.5 0.5 0.5"
+        />
+        <Animal
+          id="pig-1"
+          type="pig"
+          position="14.098 0 1.154"
+          rotation="0 -144.677 0"
+          scale="0.0405 0.0405 0.0405"
+          :animated="true"
         />
         <Animal
           id="pig-2"
@@ -383,7 +396,6 @@ onMounted(() => {
           position="8 0.5 -22.839"
           sound="src: #chicken-cluck; autoplay: true; loop: true; volume: 0.5; positional: true; refDistance: 1.5; rolloffFactor: 2; distanceModel: exponential"
         ></a-entity>
-
         <Animal
           type="chicken"
           position="22.797 0 -11.290"
