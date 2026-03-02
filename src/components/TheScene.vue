@@ -8,6 +8,7 @@ import FoodSphere from "./FoodSphere.vue";
 import "../aframe/simple-grab.js";
 import "../aframe/animal-feedable.js";
 import "../aframe/grain-dispenser.js";
+import "../aframe/duplicate-trees.js";
 
 const allAssetsLoaded = ref(false);
 
@@ -53,6 +54,10 @@ onMounted(() => {
       <a-asset-item
         id="wood-sign-model"
         src="assets/stylized_wood_signs/scene.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="tree-model"
+        src="assets/low_poly_tree.glb"
       ></a-asset-item>
 
       <!-- Sons -->
@@ -312,6 +317,32 @@ onMounted(() => {
         />
         <!-- /Poules -->
       </a-entity>
+
+      <!-- Arbres avec duplicate-trees -->
+      <a-entity
+        gltf-model="#tree-model"
+        position="0 0 0"
+        scale="0.008 0.008 0.008"
+        duplicate-trees="
+          count: 200;
+          areaSize: 80;
+          scaleMin: 0.8;
+          scaleMax: 1.5;
+          forbiddenMinX: -11.72;
+          forbiddenMaxX: 27.16;
+          forbiddenMinZ: -32.73;
+          forbiddenMaxZ: 4.27;
+        "
+      ></a-entity>
+
+      <!-- Visualisation zone interdite -->
+      <a-plane
+        position="7.72 0.028 -14.23"
+        rotation="-90 0 0"
+        width="48.6"
+        height="transparent"
+        material="opacity: 0.3; transparent: true"
+      ></a-plane>
     </template>
 
     <TheCameraRig />
