@@ -75,6 +75,10 @@ onMounted(() => {
         id="pickup-truck-model"
         src="assets/farm_pickup_truck.glb"
       ></a-asset-item>
+      <a-asset-item
+        id="bucket-model"
+        src="assets/low_poly_bucket.glb"
+      ></a-asset-item>
 
       <!-- Sons -->
       <audio
@@ -153,6 +157,14 @@ onMounted(() => {
           position="21.137 0 -22.995"
           rotation="0 28.671 0"
           scale="1.3 1.3 1.3"
+          shadow="cast: true; receive: true"
+        ></a-entity>
+
+        <a-entity
+          gltf-model="#bucket-model"
+          position="14.083 0 -24.967"
+          rotation="0 0 0"
+          scale="1 1 1"
           shadow="cast: true; receive: true"
         ></a-entity>
 
