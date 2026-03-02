@@ -52,6 +52,10 @@ onMounted(() => {
         src="assets/cartoon_chicken/scene.gltf"
       ></a-asset-item>
       <a-asset-item
+        id="bird-orange-model"
+        src="assets/bird_orange.glb"
+      ></a-asset-item>
+      <a-asset-item
         id="wood-sign-model"
         src="assets/stylized_wood_signs/scene.gltf"
       ></a-asset-item>
@@ -121,7 +125,7 @@ onMounted(() => {
           gltf-model="#farm-model"
           position="0 0 0"
           scale="4 4 4"
-          shadow="cast: true; receive: true"
+          shadow="cast: true; receive: 4tr4ue4"
         ></a-entity>
 
         <!-- Moutons -->
@@ -316,6 +320,66 @@ onMounted(() => {
           scale="3.190 1.880 1"
         />
         <!-- /Poules -->
+
+        <!-- Oiseaux oranges -->
+        <Animal
+          type="bird-orange"
+          position="12.924 1.499 -15.276"
+          rotation="0 76.433 0"
+          scale="0.2 0.2 0.2"
+          :animated="true"
+        />
+        <!-- /Oiseaux oranges -->
+
+        <!-- Poules libres dans la ferme -->
+        <Animal
+          type="chicken"
+          position="8 0 -22.839"
+          rotation="0 45 0"
+          scale="0.01 0.01 0.01"
+          :animated="true"
+        />
+        <a-entity
+          position="8 0.5 -22.839"
+          sound="src: #chicken-cluck; autoplay: true; loop: true; volume: 0.5; positional: true; refDistance: 1.5; rolloffFactor: 2; distanceModel: exponential"
+        ></a-entity>
+
+        <Animal
+          type="chicken"
+          position="22.797 0 -11.290"
+          rotation="0 -120 0"
+          scale="0.01 0.01 0.01"
+          :animated="true"
+        />
+        <a-entity
+          position="22.797 0.5 -11.290"
+          sound="src: #chicken-cluck; autoplay: true; loop: true; volume: 0.5; positional: true; refDistance: 1.5; rolloffFactor: 2; distanceModel: exponential"
+        ></a-entity>
+
+        <Animal
+          type="chicken"
+          position="6 0 -6.731"
+          rotation="0 90 0"
+          scale="0.01 0.01 0.01"
+          :animated="true"
+        />
+        <a-entity
+          position="6 0.5 -6.731"
+          sound="src: #chicken-cluck; autoplay: true; loop: true; volume: 0.5; positional: true; refDistance: 1.5; rolloffFactor: 2; distanceModel: exponential"
+        ></a-entity>
+
+        <Animal
+          type="chicken"
+          position="12.902 0 -11.826"
+          rotation="0 180 0"
+          scale="0.01 0.01 0.01"
+          :animated="true"
+        />
+        <a-entity
+          position="12.902 0.5 -11.826"
+          sound="src: #chicken-cluck; autoplay: true; loop: true; volume: 0.5; positional: true; refDistance: 1.5; rolloffFactor: 2; distanceModel: exponential"
+        ></a-entity>
+        <!-- /Poules libres -->
       </a-entity>
 
       <!-- Arbres avec duplicate-trees -->
