@@ -67,6 +67,10 @@ onMounted(() => {
         id="tractor-model"
         src="assets/tractor_low_poly.glb"
       ></a-asset-item>
+      <a-asset-item
+        id="grass-model"
+        src="assets/low_poly_grass.glb"
+      ></a-asset-item>
 
       <!-- Sons -->
       <audio
@@ -408,6 +412,22 @@ onMounted(() => {
           forbiddenMaxX: 27.16;
           forbiddenMinZ: -32.73;
           forbiddenMaxZ: 4.27;
+        "
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#grass-model"
+        position="0 0 0"
+        scale="0.5 0.5 0.5"
+        duplicate-trees="
+          count: 500;
+          areaSize: 80;
+          scaleMin: 0.8;
+          scaleMax: 3;
+          forbiddenMinX: 1000;
+          forbiddenMaxX: 1001;
+          forbiddenMinZ: 1000;
+          forbiddenMaxZ: 1001;
         "
       ></a-entity>
 
