@@ -25,9 +25,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <a-scene background="#89c4f4" stats>
+  <a-scene background="#89c4f4">
     <a-assets @loaded="allAssetsLoaded = true">
-      <img id="sky-texture" :src="`/assets/sky.jpg`" />
+      <img id="sky-texture" :src="`assets/sky.jpg`" />
       <a-asset-item
         id="heart-model"
         src="assets/heart_emoji/scene.gltf"
@@ -94,27 +94,27 @@ onMounted(() => {
       <!-- Sons -->
       <audio
         id="farm-ambience"
-        :src="`/assets/574731__crattray1997__farm-ambience-2-4416.wav`"
+        :src="`assets/574731__crattray1997__farm-ambience-2-4416.wav`"
         preload="auto"
       ></audio>
       <audio
         id="sheep-bleat"
-        :src="`/assets/321967__n_audioman__sheep_bleat.wav`"
+        :src="`assets/321967__n_audioman__sheep_bleat.wav`"
         preload="auto"
       ></audio>
       <audio
         id="pig-grunt"
-        :src="`/assets/233177__jarredgibb__pig-grunt-and-squeal-4-96khz.wav`"
+        :src="`assets/233177__jarredgibb__pig-grunt-and-squeal-4-96khz.wav`"
         preload="auto"
       ></audio>
       <audio
         id="cow-moo"
-        :src="`/assets/700380__manofham__moo-3-moo-moo-the-cow.mp3`"
+        :src="`assets/700380__manofham__moo-3-moo-moo-the-cow.mp3`"
         preload="auto"
       ></audio>
       <audio
         id="chicken-cluck"
-        :src="`/assets/724216__nickmaysoundmusic__chickens_waiting_to_be_fed_farm_light_wind_bird_song.wav`"
+        :src="`assets/724216__nickmaysoundmusic__chickens_waiting_to_be_fed_farm_light_wind_bird_song.wav`"
         preload="auto"
       ></audio>
     </a-assets>
