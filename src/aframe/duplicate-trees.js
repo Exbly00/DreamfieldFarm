@@ -66,12 +66,10 @@ AFRAME.registerComponent("duplicate-trees", {
     return { x, z };
   },
 
-  createTreeInstances: function () {
+  generatePositions: function () {
     const { count, scaleMin, scaleMax } = this.data;
-
-    const entityScale = this.el.object3D.scale;
-
     const positions = [];
+
     for (let i = 0; i < count; i++) {
       const pos = this.generateValidPosition();
       if (pos) {
@@ -85,6 +83,10 @@ AFRAME.registerComponent("duplicate-trees", {
       }
     }
 
+    return positions;
+  },
+
+  collectMeshes: function () {
     const meshes = [];
     this.target.object3D.updateWorldMatrix(true, true);
     const invModelWorld = new THREE.Matrix4()
@@ -105,6 +107,10 @@ AFRAME.registerComponent("duplicate-trees", {
       });
     });
 
+    return meshes;
+  },
+
+  createInstances: function (meshes, positions, entityScale) {
     const dummy = new THREE.Object3D();
     const relPos = new THREE.Vector3();
     const relQuat = new THREE.Quaternion();
@@ -136,6 +142,14 @@ AFRAME.registerComponent("duplicate-trees", {
       group.add(instancedMesh);
     });
 
+    return group;
+  },
+
+  createTreeInstances: function () {
+    const entityScale = this.el.object3D.scale;
+    const positions = this.generatePositions();
+    const meshes = this.collectMeshes();
+    const group = this.createInstances(meshes, positions, entityScale);
     this.el.sceneEl.object3D.add(group);
   },
 });

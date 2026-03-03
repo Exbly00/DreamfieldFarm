@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <a-scene background="color: #87CEEB" stats>
+  <a-scene background="#89c4f4" stats>
     <a-assets @loaded="allAssetsLoaded = true">
       <img id="sky-texture" src="/assets/sky.jpg" />
       <img id="heart-texture" src="/assets/coeur.png" />
@@ -56,6 +56,10 @@ onMounted(() => {
         src="assets/bird_orange.glb"
       ></a-asset-item>
       <a-asset-item
+        id="alpaca-model"
+        src="assets/low_poly_alpaca/scene.gltf"
+      ></a-asset-item>
+      <a-asset-item
         id="wood-sign-model"
         src="assets/stylized_wood_signs/scene.gltf"
       ></a-asset-item>
@@ -82,6 +86,10 @@ onMounted(() => {
       <a-asset-item
         id="fountain-model"
         src="assets/fountain.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="treadmill-model"
+        src="assets/treadmill_-_household_props_challenge_-_day_20.glb"
       ></a-asset-item>
 
       <!-- Sons -->
@@ -114,7 +122,6 @@ onMounted(() => {
 
     <template v-if="allAssetsLoaded">
       <a-sky src="#sky-texture"></a-sky>
-
       <!-- Son ambiant de ferme -->
       <a-entity
         id="ambient-sound"
@@ -177,6 +184,23 @@ onMounted(() => {
           position="21.116 0 -28.239"
           rotation="0 -180 0"
           scale="0.005 0.005 0.005"
+          animation-mixer
+          shadow="cast: true; receive: true"
+        ></a-entity>
+
+        <a-entity
+          gltf-model="#treadmill-model"
+          position="-1.490 0.213 -27.893"
+          rotation="0 137.295 0"
+          scale="1.5 1.5 1.5"
+          shadow="cast: true; receive: true"
+        ></a-entity>
+
+        <a-entity
+          gltf-model="#alpaca-model"
+          position="-1.870 0.275 -28.310"
+          rotation="0 42.386 0"
+          scale="0.500 0.500 0.500"
           animation-mixer
           shadow="cast: true; receive: true"
         ></a-entity>
