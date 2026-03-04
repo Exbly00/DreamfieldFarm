@@ -489,15 +489,6 @@ onMounted(() => {
           forbiddenMaxZ: 1001;
         "
       ></a-entity>
-
-      <!-- Visualisation zone interdite -->
-      <a-plane
-        position="7.72 0.028 -14.23"
-        rotation="-90 0 0"
-        width="48.6"
-        height="transparent"
-        material="opacity: 0.3; transparent: true"
-      ></a-plane>
     </template>
 
     <TheCameraRig />
