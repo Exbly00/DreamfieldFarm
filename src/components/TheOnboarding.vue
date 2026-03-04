@@ -30,16 +30,13 @@ function enterScene() {
           <h4>Movement modes support</h4>
           <ul>
             <li>
-              Desktop – Keyboard for move (WASD or Arrows keys) + Mouse for look
-              control (Drag and drop)
+              Desktop – WASD or Arrow keys to move + Mouse drag to look around +
+              Click to interact (grain bags, animals)
             </li>
             <li>
-              Mobile – 1x Finger touch to go forward + 2x Fingers touch to go
-              backward + Gaze cursor for click
-            </li>
-            <li>
-              VR – walk + Teleport (Grip for grab and laser for click) + Gaze
-              cursor for click
+              VR – Physical walking + Blink teleportation (joystick/touchpad) +
+              Teleport panels to jump between enclosures + Grab grains from bags
+              + Touch animals to feed them
             </li>
           </ul>
         </section>
@@ -191,7 +188,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #333;
+  background-color: #092604;
   color: #ccc;
   width: 100vw;
   height: 100vh;
