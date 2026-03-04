@@ -2,6 +2,10 @@
 
 <p align="center">An immersive VR farm experience where you can explore, interact, and feed adorable farm animals</p>
 
+<p align="center">
+  <a href="https://vr.onivers.com/estelle/" target="_blank">🎮 Try the Live Demo</a>
+</p>
+
 ## 🎮 About the Project
 
 Dreamfield Farm is an interactive VR experience that lets you step into a charming low-poly farm. Walk around beautiful enclosures, interact with friendly animals, and experience the joy of feeding them grains from your hand in virtual reality.
