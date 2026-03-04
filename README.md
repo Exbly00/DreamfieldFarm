@@ -12,12 +12,13 @@ Dreamfield Farm is an interactive VR experience that lets you step into a charmi
 
 ### ✨ Features
 
-- **Multiple Animal Enclosures** – Visit cows, sheep, pigs, alpacas, and chickens in their own spaces
+- **Multiple Animal Enclosures** – Visit cows, sheep, pigs, and chickens in their own spaces
 - **Interactive Feeding System** – Grab grains from bags and feed animals with realistic hand interactions
 - **VR Hand Presence** – Grains appear naturally in your palm without hiding your VR controllers
 - **Multi-Platform Support** – Works on Desktop, Mobile, and VR headsets
 - **Blink Teleportation** – Quick navigation between enclosures with teleport panels
 - **Beautiful Environment** – Low-poly farm aesthetics with trees, decorations, and animated elements
+- **Hidden Surprise** – An alpaca is hiding somewhere on the farm... Can you find it? 🦙
 
 ### 🎯 Controls
 
