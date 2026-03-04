@@ -1,11 +1,6 @@
-# 🌽 Dreamfield Farm 🚜
+<h1 align="center">🌽 Dreamfield Farm 🚜</h1>
 
-> An immersive VR farm experience where you can explore, interact, and feed adorable farm animals
-
-![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
-![A-Frame](https://img.shields.io/badge/A%E2%80%93Frame-brightgreen?style=for-the-badge&labelColor=%23ef2d5e&color=%23ef2d5e)
-![Threejs](https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+<p align="center">An immersive VR farm experience where you can explore, interact, and feed adorable farm animals</p>
 
 ## 🎮 About the Project
 
@@ -13,12 +8,12 @@ Dreamfield Farm is an interactive VR experience that lets you step into a charmi
 
 ### ✨ Features
 
-- **🐄 Multiple Animal Enclosures** – Visit cows, sheep, pigs, alpacas, and chickens in their own spaces
-- **🌾 Interactive Feeding System** – Grab grains from bags and feed animals with realistic hand interactions
-- **🎯 VR Hand Presence** – Grains appear naturally in your palm without hiding your VR controllers
-- **📱 Multi-Platform Support** – Works on Desktop, Mobile, and VR headsets
-- **🚀 Blink Teleportation** – Quick navigation between enclosures with teleport panels
-- **🌳 Beautiful Environment** – Low-poly farm aesthetics with trees, decorations, and animated elements
+- **Multiple Animal Enclosures** – Visit cows, sheep, pigs, alpacas, and chickens in their own spaces
+- **Interactive Feeding System** – Grab grains from bags and feed animals with realistic hand interactions
+- **VR Hand Presence** – Grains appear naturally in your palm without hiding your VR controllers
+- **Multi-Platform Support** – Works on Desktop, Mobile, and VR headsets
+- **Blink Teleportation** – Quick navigation between enclosures with teleport panels
+- **Beautiful Environment** – Low-poly farm aesthetics with trees, decorations, and animated elements
 
 ### 🎯 Controls
 
@@ -107,10 +102,14 @@ See the in-app credits page for complete attribution.
 
 ---
 
-## 📝 License
+## 📝 License & Technologies
 
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+![A-Frame](https://img.shields.io/badge/A%E2%80%93Frame-brightgreen?style=for-the-badge&labelColor=%23ef2d5e&color=%23ef2d5e)
+![Threejs](https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![MIT License](https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge&color=%23262626)
 
 ---
 
-**Made with ❤️ for VR enthusiasts and farm lovers**
+<p align="center"><strong>Made with ❤️ for VR enthusiasts and farm lovers</strong></p>
