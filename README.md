@@ -1,48 +1,51 @@
-<p align="center">
-    <img src="./logo.svg" alt="VAV Logo" align="center"/>
-</p>
-<h1 align="center">Vue + A-Frame + Vite boilerplate</h1>
+# 🌽 Dreamfield Farm 🚜
 
-> A boilerplate for A-Frame, Vue and Vite
+> An immersive VR farm experience where you can explore, interact, and feed adorable farm animals
 
 ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
 ![A-Frame](https://img.shields.io/badge/A%E2%80%93Frame-brightgreen?style=for-the-badge&labelColor=%23ef2d5e&color=%23ef2d5e)
 ![Threejs](https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-### [>> DEMO <<](https://onivers.com/aframe-vue-boilerplate/)
+## 🎮 About the Project
 
-## Included in the boilerplate
+Dreamfield Farm is an interactive VR experience that lets you step into a charming low-poly farm. Walk around beautiful enclosures, interact with friendly animals, and experience the joy of feeding them grains from your hand in virtual reality.
 
-### Libs and components
+### ✨ Features
 
-- [aframe-extras](https://github.com/c-frame/aframe-extras) (MIT License)
-- [aframe physx](https://github.com/c-frame/physx) (MIT License)
-- [aframe-blink-controls](https://github.com/jure/aframe-blink-controls) (MIT License)
-- [aframe-multi-camera](https://github.com/diarmidmackenzie/aframe-multi-camera/) (MIT License)
-- [simple-navmesh-constraint](https://github.com/AdaRoseCannon/aframe-xr-boilerplate) (MIT Licence)
+- **🐄 Multiple Animal Enclosures** – Visit cows, sheep, pigs, alpacas, and chickens in their own spaces
+- **🌾 Interactive Feeding System** – Grab grains from bags and feed animals with realistic hand interactions
+- **🎯 VR Hand Presence** – Grains appear naturally in your palm without hiding your VR controllers
+- **📱 Multi-Platform Support** – Works on Desktop, Mobile, and VR headsets
+- **🚀 Blink Teleportation** – Quick navigation between enclosures with teleport panels
+- **🌳 Beautiful Environment** – Low-poly farm aesthetics with trees, decorations, and animated elements
 
-### Movement modes support
+### 🎯 Controls
 
-- **Desktop** – Keyboard for move (_WASD_ or Arrows keys) + Mouse for look control (Drag and drop)
-- **Mobile** – 1x Finger touch to go forward + 2x Fingers touch to go backward + Gaze cursor for click
-- **VR/AR** – walk + Teleport (Grip for grab and laser for click) + Gaze cursor for click in AR
+#### 💻 Desktop Mode
 
-### 3D models
+- **WASD / Arrow keys** – Move around
+- **Mouse drag** – Look around
+- **Click** – Interact with grain bags and animals
 
-- **Main room** – [VR Gallery](https://sketchfab.com/3d-models/vr-gallery-1ac32ed62fdf424498acc146fad31f7e) by [Maxim Mavrichev](https://sketchfab.com/mvrc.art) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **3D physic room** – [3d_gallery_for_vr_projects](https://sketchfab.com/3d-models/3d-gallery-for-vr-projects-68f77ed8558c4bd59e0a13e2cc9d1fd1) by [tekuto1s](https://sketchfab.com/tekuto1s) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+#### 🥽 VR Mode
+
+- **Physical walking** – Move naturally in your space
+- **Joystick/Touchpad** – Use blink teleportation
+- **Teleport panels** – Instantly jump between animal enclosures
+- **Grip buttons** – Grab grain handfuls from bags
+- **Touch animals** – Feed them with grains in your hand
 
 ---
 
-## Quickstart
+## 🚀 Quickstart
 
 ### Create a folder for your project and move to it
 
 ### Clone (or fork, or download)
 
 ```sh
-git clone https://github.com/Chabloz/a-frame-vite-vue-boilerplate.git .
+git clone https://github.com/Exbly00/DreamfieldFarm.git .
 ```
 
 ### Install dependencies
@@ -63,7 +66,7 @@ npm run dev
 npm run build
 ```
 
-## Notes for local dev on VR headset
+## 📱 Notes for local dev on VR headset
 
 1. Check that your development device and your VR headset are connected on **the same network**.
 
@@ -80,6 +83,34 @@ npm run dev-expose
 
 ---
 
-## License
+## 🎨 Credits
+
+This project uses assets from talented creators across the web. Full credits for all 3D models, sounds, and code libraries can be found on the onboarding screen when you launch the application.
+
+### Key Technologies
+
+- [Vue 3](https://vuejs.org/) – Reactive UI framework
+- [A-Frame](https://aframe.io/) – WebVR framework
+- [Three.js](https://threejs.org/) – 3D graphics library
+- [Vite](https://vitejs.dev/) – Fast build tool
+- [aframe-extras](https://github.com/c-frame/aframe-extras) – Animation and controls
+- [aframe-physx](https://github.com/c-frame/physx) – Physics engine
+- [aframe-blink-controls](https://github.com/jure/aframe-blink-controls) – VR teleportation
+
+### Assets
+
+- **16 3D Models** from [Sketchfab](https://sketchfab.com)
+- **5 Sound Effects** from [Freesound](https://freesound.org)
+- All properly licensed under CC BY, CC0, and Free Standard licenses
+
+See the in-app credits page for complete attribution.
+
+---
+
+## 📝 License
 
 ![MIT License](https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge&color=%23262626)
+
+---
+
+**Made with ❤️ for VR enthusiasts and farm lovers**
