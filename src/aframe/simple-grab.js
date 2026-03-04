@@ -65,8 +65,12 @@ AFRAME.registerSystem("simple-grab", {
   setCurrentGrab: function (hand, el) {
     this.currentGrab.set(hand, el);
 
-    // Cacher le modèle de la main VR quand on grab
-    if (hand === this.leftHand || hand === this.rightHand) {
+    // Cacher le modèle de la main VR quand on grab (sauf pour les grains)
+    const isGrainHandful = el.classList.contains("grain-handful");
+    if (
+      (hand === this.leftHand || hand === this.rightHand) &&
+      !isGrainHandful
+    ) {
       const handControlsModel = hand.getObject3D("mesh");
       if (handControlsModel) {
         handControlsModel.visible = false;
@@ -258,6 +262,11 @@ AFRAME.registerComponent("simple-grab", {
 
   tick: function () {
     if (!this.grabbedBy) return;
+
+    // Pour les grains, ne pas copier position/rotation car ils sont enfants de la main
+    const isGrainHandful = this.el.classList.contains("grain-handful");
+    if (isGrainHandful) return;
+
     copyPosition(this.grabbedBy, this.el);
     copyRotation(this.grabbedBy, this.el, true);
   },

@@ -25,9 +25,10 @@ AFRAME.registerComponent("grain-dispenser", {
     const grainHandful = document.createElement("a-entity");
     grainHandful.setAttribute("class", "grain-handful");
     grainHandful.setAttribute("simple-grab", "");
-    grainHandful.setAttribute("scale", "0.15 0.15 0.15");
+    grainHandful.setAttribute("scale", "0.08 0.08 0.08");
     grainHandful.setAttribute("data-animal-id", this.data.animalId);
     grainHandful.setAttribute("data-animal-type", this.data.animalType);
+    grainHandful.setAttribute("position", "-0.01 0.001 -0.03");
 
     const spheresData = [
       { radius: 0.25, color: "#FFD700", position: "0 0 0" },
@@ -46,8 +47,8 @@ AFRAME.registerComponent("grain-dispenser", {
       grainHandful.appendChild(sphere);
     });
 
-    this.el.sceneEl.appendChild(grainHandful);
-    grainHandful.object3D.position.copy(hand.object3D.position);
+    // Attacher les grains comme enfant de la main au lieu de la scène
+    hand.appendChild(grainHandful);
 
     // Auto-grabber après un court délai
     setTimeout(() => {
